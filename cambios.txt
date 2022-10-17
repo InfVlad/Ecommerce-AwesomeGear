@@ -1,0 +1,21 @@
+creates file
+.babelrc on root with:
+{
+    "presets": ["next/babel"]
+}
+
+cambia .eslintrc.json
+de: 
+{
+  "extends": "next/core-web-vitals"
+}
+a:
+{
+  "extends": ["next/babel","next/core-web-vitals"]
+}
+
+en babelrc cambio:
+
+{
+    "presets": ["next/babel". "@babel/preset-react"]
+}
