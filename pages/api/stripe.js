@@ -1,15 +1,9 @@
 import Stripe from "stripe";
 
 const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY);
-// import Stripe from "stripe";
-
-// const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
-
-    
-    console.log("🚀 ~ file: stripe.js ~ line 12 ~ handler ~ req.body", req.body)
     
     try {
         const params = {
@@ -43,7 +37,6 @@ export default async function handler(req, res) {
             success_url: `${req.headers.origin}/?success=true`,
             cancel_url: `${req.headers.origin}/?canceled=true`,
         }
-        console.log("🚀 ~ file: stripe.js ~ line 44 ~ handler ~ params", params)
 
       // Create Checkout Sessions from body params.
       const session = await stripe.checkout.sessions.create(params);
