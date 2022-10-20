@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { client, urlFor } from "../../lib/client";
 import {
 	AiOutlineMinus,
@@ -12,7 +12,12 @@ import { useStateContext } from "../../context/StateContext";
 const ProductDetails = ({ product, products }) => {
 	const { image, name, details, price } = product;
 	const [index, setIndex] = useState(0);
-	const { decQty, incQty, qty, onAdd } = useStateContext();
+	const { decQty, incQty, qty, onAdd, setQty } = useStateContext();
+
+	useEffect(() => {
+	  setQty(1)
+	}, [product])
+	
 
 	return (
 		<div>
@@ -27,7 +32,7 @@ const ProductDetails = ({ product, products }) => {
 					</div>
 					<div className="small-images-container">
 						{image?.map((item, i) => (
-							<img
+							<img key={i}
 								src={urlFor(item)}
 								className={
 									i === index ? "small-image selected-image" : "small-image"
@@ -59,7 +64,7 @@ const ProductDetails = ({ product, products }) => {
 							<span className="minus" onClick={decQty}>
 								<AiOutlineMinus />
 							</span>
-							<span className="num" onClick={""}>
+							<span className="num">
 								{qty}
 							</span>
 							<span className="plus" onClick={incQty}>
@@ -75,7 +80,7 @@ const ProductDetails = ({ product, products }) => {
 						>
 							Add to Cart
 						</button>
-						<button type="button" className="buy-now" onClick={""}>
+						<button type="button" className="buy-now">
 							Buy Now
 						</button>
 					</div>
