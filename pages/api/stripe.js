@@ -1,15 +1,16 @@
 import Stripe from "stripe";
 
-// const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY);
+const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY);
+// import Stripe from "stripe";
 
-
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+// const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
 
-    console.log(req.body)
-
+    
+    console.log("🚀 ~ file: stripe.js ~ line 12 ~ handler ~ req.body", req.body)
+    
     try {
         const params = {
             submit_type: 'pay',
@@ -17,14 +18,12 @@ export default async function handler(req, res) {
             payment_method_types: ['card'],
             billing_address_collection: 'auto',
             shipping_options: [
-                { shipping_rate: 'shr_1Lv1wQFzRgi0pLUVRjlviJbV'},
                 { shipping_rate: 'shr_1Lv1xBFzRgi0pLUV3GfJ1UG6'},
             ],
             line_items: req.body.map(item => {
                 const img = item.image[0].asset._ref;
                 const newImage = img.replace("image-","https://cdn.sanity.io/images/y64aoq1q/production/").replace("-webp",".webp")
-            
-                return {
+                const newItem = {
                     price_data: {
                         currency: "usd",
                         product_data: {
@@ -38,11 +37,13 @@ export default async function handler(req, res) {
                         minimum: 1,
                     },
                     quantity: item.quantity,
-                }
+                };
+                return newItem;
             }),
             success_url: `${req.headers.origin}/?success=true`,
             cancel_url: `${req.headers.origin}/?canceled=true`,
-          }
+        }
+        console.log("🚀 ~ file: stripe.js ~ line 44 ~ handler ~ params", params)
 
       // Create Checkout Sessions from body params.
       const session = await stripe.checkout.sessions.create(params);
