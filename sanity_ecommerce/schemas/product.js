@@ -27,6 +27,11 @@ export default {
             }
         },
         {
+            name: "manufacturer",
+            title: "Manufacturer",
+            type: "string",
+        },
+        {
             name: "price",
             title: "Price",
             type: "number",
@@ -34,7 +39,12 @@ export default {
         {
             name: "details",
             title: "Details",
-            type: "string"
+            type: "string",
+        },
+        {
+            name: "category",
+            title: "Category",
+            type: "string",
         }
     ]
 }

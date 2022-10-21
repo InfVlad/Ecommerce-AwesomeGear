@@ -1,5 +1,6 @@
 import React from 'react'
 import { AiFillInstagram, AiOutlineTwitter } from 'react-icons/ai'
+import styles from "./Footer.module.css";
 
 const Footer = () => {
   return (

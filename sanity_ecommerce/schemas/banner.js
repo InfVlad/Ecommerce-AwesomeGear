@@ -20,6 +20,10 @@ export default {
             name: 'product',
             title: 'Product',
             type: 'string',
+        },{
+            name: 'manufacturer',
+            title: 'Manufacturer',
+            type: 'string',
         },
         {
             name: 'desc',
