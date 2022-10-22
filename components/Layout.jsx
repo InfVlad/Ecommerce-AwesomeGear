@@ -6,7 +6,7 @@ import Footer from "./Footer";
 
 const Layout = ({children}) => {
 	return (
-    <div>
+    <div className="body">
       <Head>
         <title>Awesome Gear - Gaming Store</title>
       </Head>

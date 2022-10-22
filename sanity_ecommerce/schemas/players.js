@@ -17,5 +17,13 @@ export default {
 			title: "Name",
 			type: "string",
 		},
+		{name: "bg-image",
+			title: "Bg-Image",
+			type: "array",
+			of: [{ type: "image" }],
+			options: {
+				hotspot: true,
+			},
+		},
 	],
 };

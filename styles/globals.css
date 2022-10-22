@@ -17,6 +17,7 @@
 	--first-color-lighter: hsl(237, 92%, 85%);
 	--text-color: hsl(237, 70%, 96%);
 	--text-color-darker: hsl(237, 8%, 75%);
+	--bg-color-light: hsl(237,45%, 79%);
 	--secondary-color: hsl(237, 8%, 45%);
 	--secondary-color-darker: hsl(237, 8%, 35%);
   --third-color: hsl(237,4%, 5%);;
@@ -53,17 +54,18 @@
 	--mb-3: 3rem;
 }
 
-/*================ Variables Dark theme ====================*/
-.dark-theme {
+/*================ Variables light theme ====================*/
+.light-theme {
 	/* Colors in HSL*/
-	--first-color-second: hsl(237, 30%, 8%);
-	--title-color: hsl(237, 8%, 95%);
-	--text-color: hsl(237, 8%, 75%);
-	--input-color: hsl(237, 29%, 16%);
+	/* --first-color-second: hsl(237, 30%, 8%);
+	--title-color: hsl(237, 8%, 95%); */
+  --bg-color: hsl(237, 70%, 96%);
+	--text-color: hsl(237,13%, 24%);
+	/* --input-color: hsl(237, 29%, 16%);
 	--body-color: hsl(237, 28%, 12%);
 	--container-color: hsl(237, 29%, 16%);
 	--scroll-bar-color: hsl(237, 12%, 48%);
-	--scroll-thumb-color: hsl(237, 12%, 36%);
+	--scroll-thumb-color: hsl(237, 12%, 36%); */
 }
 
 
@@ -99,7 +101,11 @@ a {
 	text-decoration: none;
 }
 
-/*============== Navbar =======================*/
+.body {
+  background-color: var(--bg-color);
+}
+
+/*======================== Navbar =======================*/
 .navbar-container{
   display: flex;
   justify-content: space-between;
@@ -294,7 +300,7 @@ a {
   position: absolute;
   right: 12%;
   font-size: 3rem;
-  color: var(--secondary-color);
+  color: var(--first-color);
   cursor: pointer;
   transition: transform .4s ease;
 }
@@ -384,7 +390,7 @@ text-align: end;
  cursor: pointer;
   transform: scale(1, 1);
   transition: transform 0.5s ease;
- color: #324d67;
+ color: var(--first-color);
  width: 250px;
  overflow: hidden;
 }
@@ -393,7 +399,7 @@ text-align: end;
 }
 .product-image{
   border-radius: 15px;
- background-color: #ebebeb;
+ background-color: var(--bg-color-light);
   transform: scale(1, 1);
   transition: transform 0.5s ease;
   object-fit: contain;
@@ -405,13 +411,13 @@ text-align: end;
 .product-price{
   font-weight: 800;
   margin-top: 6px;
-  color: black;
+  color: var(--text-color);
 }
 
 .products-heading{
   text-align: center;
   margin: 40px 0px;
- color: #324d67;
+ color: var(--first-color);
 
 }
 .products-heading h2{
@@ -627,9 +633,11 @@ padding: 30px 65px;
   transform: scale(1.1,1.1);
 }
 .product-detail-container{
+
   display: flex;
+  max-width: 1400px;
  gap: 40px;
- margin: 40px;
+ margin: auto;
  margin-top: 60px;
  color: #324d67;
 
