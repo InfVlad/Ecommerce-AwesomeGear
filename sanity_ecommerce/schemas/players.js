@@ -1,6 +1,6 @@
 export default {
-	name: "menu",
-	title: "Menu",
+	name: "players",
+	title: "Players",
 	type: "document",
 	fields: [
 		{
@@ -17,8 +17,8 @@ export default {
 			title: "Name",
 			type: "string",
 		},
-		{name: "bg-image",
-			title: "Bg-Image",
+		{name: "bgimage",
+			title: "BgImage",
 			type: "array",
 			of: [{ type: "image" }],
 			options: {

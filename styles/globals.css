@@ -228,6 +228,7 @@ a {
   width: 100%;
   margin: auto;
   color: var(--third-color);
+  z-index: 2;
 }
 .hero-banner-container .top-small-text{
   font-size: 25px;
@@ -281,6 +282,7 @@ a {
   height: 650px;
   object-fit: contain;
   pointer-events: none;
+  z-index: -1;
 }
 
 .hero-product-name{
@@ -374,7 +376,7 @@ text-align: end;
 }
 
  span.text-red {
-    -webkit-text-stroke: 1px #f02d34;
+    -webkit-text-stroke: 1px var(--first-color);
     margin-left: 6px;
 }
 
@@ -430,12 +432,12 @@ text-align: end;
 }
 .footer-banner-container{
   padding: 100px 40px;
-  background-color: #f02d34;
+  background-color: var(--first-color);
   border-radius: 15px;
   position: relative;
   height: 400px;
   line-height: 1; 
-  color: white;
+  color: var(--text-color);
   width: 100%;
   margin-top: 120px;
 }
@@ -447,7 +449,7 @@ text-align: end;
   border-radius: 15px;
   padding: 10px 16px;
   background-color: white;
-  color: red;
+  color: var(--first-color);
   border: none;
   margin-top: 40px;
   font-size: 18px;
@@ -497,7 +499,7 @@ text-align: end;
 .cart-container{
   height: 100vh;
   width: 600px;
-  background-color: white;
+  background-color: var(--bg-color);
   float: right;
   padding: 40px 10px;
   position: relative;
@@ -505,7 +507,7 @@ text-align: end;
 }
 
 .footer-container{
-  color: #324d67;
+  color: var(--text-color);
   text-align: center;
   margin-top: 20px;
   padding: 30px 10px;
@@ -532,18 +534,21 @@ text-align: end;
   margin-left: 10px;
   border: none;
   background-color: transparent;
+  color: var(--text-color);
 }
 
 .cart-heading .heading{
   margin-left: 10px;
+  color: var(--text-color);
 }
 .cart-num-items{
   margin-left: 10px;
-  color: #f02d34;
+  color: var(--first-color);
 }
 .empty-cart{
   margin:40px;
   text-align:center;
+  color: var(--text-color);
 }
 .empty-cart h3{
   font-weight: 600;
@@ -573,7 +578,7 @@ padding: 20px 10px;
   display: flex;
   justify-content: space-between;
   width: 350px;
-   color: #324d67;
+   color: var(--text-color);
 
 }
 .item-desc .bottom{
@@ -588,10 +593,10 @@ padding: 20px 10px;
 .total{
   display: flex;
   justify-content: space-between;
+  color: var(--text-color);
 }
 .total h3{
   font-size: 22px;
-
 }
 .remove-item{
   font-size: 24px;
@@ -623,8 +628,8 @@ padding: 30px 65px;
   margin-top: 10px;
   margin-top: 40px;
   text-transform: uppercase;
-  background-color: #f02d34;
-  color: #fff;
+  background-color: var(--first-color);
+  color: var(--text-color);
   cursor: pointer;
     transform: scale(1, 1);
   transition: transform 0.5s ease;
@@ -639,7 +644,7 @@ padding: 30px 65px;
  gap: 40px;
  margin: auto;
  margin-top: 60px;
- color: #324d67;
+ color: var(--text-color);
 
 }
 
@@ -654,7 +659,7 @@ padding: 30px 65px;
   object-fit: contain;
 }
 .product-detail-image:hover{
-  background-color: #f02d34;
+  background-color: var(--first-color);
 
 }
 .small-images-container{
@@ -671,10 +676,10 @@ padding: 30px 65px;
 }
 
 .selected-image{
-  background-color:#f02d34;
+  background-color:var(--first-color);
 }
 .reviews{
-  color: #f02d34;
+  color: var(--first-color);
   margin-top: 10px;
   display: flex;
   gap: 5px;
@@ -688,14 +693,14 @@ padding: 30px 65px;
   margin-top: 10px;
 }
 .reviews p{
-  color: #324d67;
+  color: var(--text-color);
   margin-top: 0px;
 }
 .product-detail-desc .price{
   font-weight: 700 ;
   font-size: 26px;
   margin-top: 30px;
-  color:#f02d34;
+  color:var(--first-color);
 }
 .price .old-price, .product-price .old-price, .price .old-price{
   color: gray;
@@ -713,16 +718,18 @@ padding: 30px 65px;
 }
 .buttons .add-to-cart{
   padding: 10px 20px;
-  border: 1px solid #f02d34 ;
+  border: 1px solid var(--first-color) ;
   margin-top: 40px;
   font-size: 18px;
   font-weight: 500;
   background-color: white;
-  color: #f02d34;
+  color: var(--first-color-alt);
   cursor: pointer;
   width: 200px;
    transform: scale(1, 1);
   transition: transform 0.5s ease;
+  border-radius: 0.5rem;
+
 }
 .buttons .add-to-cart:hover{
   transform:scale(1.1,1.1)
@@ -731,7 +738,7 @@ padding: 30px 65px;
   width: 200px;
 
   padding: 10px 20px;
-  background-color: #f02d34;
+  background-color: var(--first-color-alt);
   color: white;
   border: none;
   margin-top: 40px;
@@ -740,6 +747,7 @@ padding: 30px 65px;
   cursor: pointer;
    transform: scale(1, 1);
   transition: transform 0.5s ease;
+  border-radius: 0.5rem;
 }
 .buttons .buy-now:hover{
   transform:scale(1.1,1.1)
@@ -755,14 +763,14 @@ padding: 6px;
 }
 .quantity-desc .minus{
   border-right: 1px solid gray;
-  color: #f02d34;
+  color: var(--first-color);
 }
 .quantity-desc .num{
   border-right: 1px solid gray;
   font-size: 20px;
 }
 .quantity-desc .plus{
-  color: rgb(49, 168, 49);
+  color: var(--first-color);
 
 }
 
@@ -772,7 +780,7 @@ padding: 6px;
 .maylike-products-wrapper h2{
   text-align: center;
   margin: 50px;
-  color: #324d67;
+  color: var(--text-color);
 
   font-size: 28px;
 }
@@ -784,7 +792,7 @@ padding: 6px;
 }
 .max-qty{
   font-weight: 500;
-  color: #f02d34;
+  color: var(--first-color);
 }
 .success-wrapper, .cancel-wrapper{
   background-color: white;
@@ -813,7 +821,7 @@ margin-top: 160px;
   margin-top: 15px 0px;
   font-weight: 900;
   font-size: 40px;
-  color:#324d67;
+  color: var(--text-color);
 }
 .success .email-msg{
    font-size: 16px;
@@ -833,10 +841,36 @@ margin-top: 160px;
 }
 .success .description .email{
   margin-left: 5px;
-  color: #f02d34;
+  color: var(--first-color);
 }
 .product-max-qty{
   margin-top: 10px;
+}
+
+.category-menu-container{
+  min-width: 700px;
+  max-width: 1100px;
+  display: flex;
+  flex-wrap: wrap;
+  /* border-style: solid; */
+  /* border-width: 0.1rem; */
+  /* border-color: var(--first-color); */
+  color: var(--text-color);
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+}
+.category-menu-item{
+  height: 400px;
+  min-width: 350px;
+  max-width: 500px;
+  border-style: solid;
+  border-color: var(--secondary-color);
+}
+.category-menu-lowest-price{
+  color: var(--first-color);
+  font-weight: var(--font-bold);
+  font-size: var(--big-font-size);
 }
 
 @media screen and (max-width:800px) {
@@ -950,7 +984,7 @@ margin-top: 160px;
 }
 .flex h5{
   font-size: 16px;
-   color: #324d67;
+   color: var(--text-color);
 }
 .flex h4{
   font-size: 16px;

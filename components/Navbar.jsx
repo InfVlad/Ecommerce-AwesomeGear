@@ -13,10 +13,20 @@ const Navbar = () => {
 				<div className="logo-container">AG</div>
 			</Link>
 			<ul className="navbar-buttons-container">
-				<li className="navbar-button">Mice</li>
-				<li className="navbar-button">Keyboards</li>
-				<li className="navbar-button">Headsets</li>
-				<li className="navbar-button">Mouse pads</li>
+				<Link href={"/shop"}>
+					<li className="navbar-button">Mice</li>
+				</Link>
+				<Link href={"/shop"}>
+					<li className="navbar-button">Keyboards</li>
+				</Link>
+
+				<Link href={"/shop"}>
+					<li className="navbar-button">Headsets</li>
+				</Link>
+
+				<Link href={"/shop"}>
+					<li className="navbar-button">Mouse pads</li>
+				</Link>
 			</ul>
 			<div className="navbar-user-container">
 				<button
