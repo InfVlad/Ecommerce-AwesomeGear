@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { urlFor } from "../lib/client";
 
-const Product = ({ product: { image, name, slug, price } }) => {
+const Product = ({ product: { image, name, slug, price, manufacturer } }) => {
 	return (
 		<div>
 			<Link href={`/product/${slug.current}`}>
@@ -15,6 +15,7 @@ const Product = ({ product: { image, name, slug, price } }) => {
 							alt=""
 						/>
 					<p className="product-name">{name}</p>
+					<p className="product-manufacturer">{manufacturer}</p>
 					<p className="product-price">${price}</p>
 				</div>
 			</Link>

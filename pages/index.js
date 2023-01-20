@@ -1,14 +1,27 @@
 import React from "react";
 import { client } from "../lib/client";
-import { HeroBanner, FooterBanner, CategoryMenu } from "../components";
+import Link from "next/link";
+import {
+	HeroBanner,
+	FeaturedItems,
+	FooterBanner,
+	CategoryMenu,
+} from "../components";
+import { BsArrowRightCircle } from "react-icons/bs";
 
 const Home = ({ bannerData, featuredItems, categoryMenuItems }) => {
-	// console.log(categoryMenuItems);
 	return (
 		<>
-			<HeroBanner heroBanner={bannerData.length && bannerData[0]} />
+			<HeroBanner heroBannerData={bannerData.length && bannerData} />
+			<Link href={`/shop`}>
+				<div className="link-search-products-container">
+					<div className="checkout-products">Checkout our products!</div>
+					<BsArrowRightCircle className="checkout-arrow-icon" />
+				</div>
+			</Link>
 			<CategoryMenu categoryMenuItems={categoryMenuItems} />
-			<FooterBanner footerBanner={bannerData && bannerData[0]} />
+			<FeaturedItems featuredItems={featuredItems} />
+			<FooterBanner footerBanner={bannerData && bannerData[1]} />
 		</>
 	);
 };
@@ -54,7 +67,7 @@ export const getServerSideProps = async () => {
 	const mousePadQuery = '*[_type == "product" && category == "mouse pad"][2]';
 	const mousePad = await client.fetch(mousePadQuery);
 
-	const featuredItems = [keyboard, mouse, headset, mousePad];
+	const featuredItems = [mouse, keyboard, headset, mousePad];
 	return {
 		props: { bannerData, featuredItems, categoryMenuItems },
 	};

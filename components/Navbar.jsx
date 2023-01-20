@@ -12,7 +12,7 @@ const Navbar = () => {
 			<Link href={"/"}>
 				<div className="logo-container">AG</div>
 			</Link>
-			<ul className="navbar-buttons-container">
+			{/* <ul className="navbar-buttons-container">
 				<Link href={"/shop"}>
 					<li className="navbar-button">Mice</li>
 				</Link>
@@ -27,7 +27,7 @@ const Navbar = () => {
 				<Link href={"/shop"}>
 					<li className="navbar-button">Mouse pads</li>
 				</Link>
-			</ul>
+			</ul> */}
 			<div className="navbar-user-container">
 				<button
 					type="button"

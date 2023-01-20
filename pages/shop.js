@@ -4,12 +4,11 @@ import {  Product } from "../components";
 
 
 
-const shop = ({products}) => {
+const Shop = ({products}) => {
 	return (
 		<div>
 			<div className="products-heading">
-				<h2>Best Selling Products</h2>
-				<p>Speakers of many variations</p>
+				<h2>High Quality Products</h2>
 			</div>
 
 			<div className="products-container">
@@ -30,4 +29,4 @@ export const getServerSideProps = async () => {
 		props: { products },
 	};
 };
-export default shop;
+export default Shop;

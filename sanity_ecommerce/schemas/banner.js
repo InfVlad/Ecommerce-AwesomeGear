@@ -20,7 +20,17 @@ export default {
             name: 'product',
             title: 'Product',
             type: 'string',
-        },{
+        },
+        {
+            name: "slug",
+            title: "Slug",
+            type: "slug",
+            options: {
+                source: "product",
+                maxLength: 90,
+            }
+        },
+        {
             name: 'manufacturer',
             title: 'Manufacturer',
             type: 'string',
@@ -54,6 +64,16 @@ export default {
             name: 'discount',
             title: 'Discount',
             type: 'string',
+        },
+        {
+            name: 'price',
+            title: 'Price',
+            type: 'number',
+        },
+        {
+            name: 'oldPrice',
+            title: 'OldPrice',
+            type: 'number',
         },
         {
             name: 'saleTime',
