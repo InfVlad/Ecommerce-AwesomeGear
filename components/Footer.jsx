@@ -1,16 +1,29 @@
-import React from 'react'
-import { AiFillInstagram, AiOutlineTwitter } from 'react-icons/ai'
+import React from "react";
+import { AiFillGithub, AiOutlineYoutube } from "react-icons/ai";
 
 const Footer = () => {
-  return (
-    <div className='footer-container'>
-      <p>2022 JSM Headphones All rights reserved</p>
-      <p className="icons">
-        <AiFillInstagram />
-        <AiOutlineTwitter />
-      </p>
-    </div>
-  )
-}
+	return (
+		<div className="footer-container">
+			<p>Site made by Vladimir Infante</p>
+			<p>2023 Copyright - All rights reserved</p>
+			<p className="icons">
+				<a
+					href="https://github.com/SpicyArepa"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					<AiFillGithub />
+				</a>
+				<a
+					href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					<AiOutlineYoutube />
+				</a>
+			</p>
+		</div>
+	);
+};
 
-export default Footer
+export default Footer;

@@ -121,11 +121,16 @@ a {
 .logo-container {
   color: var(--text-color);
   padding: 5px;
-  border: solid 3px;
-  border-radius: 50%;
-  border-color: var(--first-color);
   font-size: var(--big-font-size);
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logo{
+  height: 45px;
+  width: 45px;
+  object-fit: contain;
 }
 
 .navbar-buttons-container {
@@ -155,7 +160,7 @@ a {
   flex-direction: row;
   justify-content: space-between;
 }
-.cart-icon{
+.cart-icon-btn{
   font-size: 25px;
   color: var(--secondary-color);
   margin-right: 12px;
@@ -165,12 +170,18 @@ a {
   border: none;
   background-color: transparent;
 }
+.cart-icon{
+  position: absolute;
+  top:16px;
+  right:-10px
+}
 .cart-icon:hover{
   transform: scale(1.1,1.1);
 }
 .cart-item-qty{
   position: absolute;
-  right: -8px;
+  right: -19px;
+  top: 13px;
   font-size: 12px;
   color: #eee;
   background-color: var(--first-color);
@@ -831,15 +842,22 @@ padding: 6px;
   color: var(--first-color);
 }
 .success-wrapper, .cancel-wrapper{
-  background-color: white;
+  background-color: var(--bg-color);
   min-height: 60vh;
+  /* height: 40rem; */
+  /* max-height: 90vh; */
+
+  /* height: 800px; */
+  color: var(--text-color);
+  margin-top: 20vh;
 
 }
 .success, .cancel{
   width: 1000px;
+  max-width: 95%;
 margin: auto;
 margin-top: 160px;
-  background-color: #dcdcdc;
+  background-color: var(--secondary-color-darker);
   padding: 50px;
   border-radius: 15px;
   display: flex;
@@ -860,7 +878,7 @@ margin-top: 160px;
   color: var(--text-color);
 }
 .success .email-msg{
-   font-size: 16px;
+   font-size: var(--h3-font-size);
   font-weight: 600;
   text-align: center;
 }
@@ -869,7 +887,7 @@ margin-top: 160px;
   font-weight: 600;
 }
 .success .description{
-  font-size: 16px;
+  font-size: var(--h3-font-size);
   font-weight: 600;
   text-align: center;
   margin: 10px;
@@ -877,7 +895,7 @@ margin-top: 160px;
 }
 .success .description .email{
   margin-left: 5px;
-  color: var(--first-color);
+  color: var(--first-color-lighter);
 }
 .product-max-qty{
   margin-top: 10px;
@@ -888,9 +906,6 @@ margin-top: 160px;
   max-width: 1100px;
   display: flex;
   flex-wrap: wrap;
-  /* border-style: solid; */
-  /* border-width: 0.1rem; */
-  /* border-color: var(--first-color); */
   color: var(--text-color);
   margin: auto;
   justify-content: center;
@@ -1363,6 +1378,9 @@ margin-top: 160px;
   .hero-product-name{
     left: 15%;
     font-size: 1.2rem;
+  }
+  .shop-name{
+    display: none;
   }
 
   .right-icon, .left-icon{

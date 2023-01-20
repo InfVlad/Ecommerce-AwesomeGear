@@ -10,31 +10,18 @@ const Navbar = () => {
 	return (
 		<div className="navbar-container">
 			<Link href={"/"}>
-				<div className="logo-container">AG</div>
+				<div className="logo-container">
+					<img src="/logo.png" alt="" className="logo" />
+					<div className="shop-name">AwesomeGear</div>
+				</div>
 			</Link>
-			{/* <ul className="navbar-buttons-container">
-				<Link href={"/shop"}>
-					<li className="navbar-button">Mice</li>
-				</Link>
-				<Link href={"/shop"}>
-					<li className="navbar-button">Keyboards</li>
-				</Link>
-
-				<Link href={"/shop"}>
-					<li className="navbar-button">Headsets</li>
-				</Link>
-
-				<Link href={"/shop"}>
-					<li className="navbar-button">Mouse pads</li>
-				</Link>
-			</ul> */}
 			<div className="navbar-user-container">
 				<button
 					type="button"
-					className="cart-icon"
+					className="cart-icon-btn"
 					onClick={() => setShowCart(true)}
 				>
-					<FaShoppingCart />
+					<FaShoppingCart className="cart-icon" />
 					<span className="cart-item-qty">{totalQuantities}</span>
 				</button>
 				<div className="user-container">
