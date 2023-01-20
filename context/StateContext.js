@@ -19,7 +19,7 @@ export const StateContext = ({ children }) => {
 		);
 
 		setTotalPrice(
-			(prevTotalPrice) => prevTotalPrice + product.price * quantity
+			(prevTotalPrice) => prevTotalPrice + Math.round(((product.price * quantity)+ Number.EPSILON)*100)/100
 		);
 		setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + quantity);
 		if (checkProductInCart) {
