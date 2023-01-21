@@ -242,7 +242,7 @@ a {
   width: 100%;
   margin: auto;
   color: var(--first-color);
-  z-index: 2;
+  z-index: 0;
 }
 .hero-banner-container .top-small-text{
   font-size: 25px;
@@ -1132,9 +1132,53 @@ margin-top: 160px;
   width: 7rem;
   cursor: pointer;
 }
-.login-botton-text .link{
+.login-botton-text .link, .dropdown-button {
   color: var(--first-color);
 }
+.dropdown-button{
+  display: flex;
+  background-color: var(--bg-color);
+  border-style: none;
+  font-size: 1.2rem;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.dropdown-menu-container{
+  position: relative;
+  display: inline-block;
+  background-color: var(--bg-color);
+}
+.dropdown-menu-items{
+  position: absolute;
+  padding-right: 0;
+  right: 0;
+  top:2rem;
+  z-index: 3;
+  background-color: var(--bg-color);
+  border-style: solid;
+  border-color: var(--first-color);
+  border-radius: 10px;
+}
+.dropdown-menu-item{
+  display: block;
+  min-width: 150px;
+  text-align: left;
+  padding-top: 0.5rem;
+  padding-left: 0.4rem;
+  clear: both;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+}
+.dropdown-menu-item:hover{
+  padding-left: 0.8rem;
+  color: var(--first-color);
+}
+.dropdown-button-text{
+  margin-left: 4px;
+}
+
 
 @media screen and (max-width:1066px){
 .footer-banner-container{
@@ -1170,7 +1214,7 @@ margin-top: 160px;
 }
 
 @media screen and (max-width:768px) {
-  .navbar-buttons-container, .user-name {
+  .navbar-buttons-container, .dropdown-button-text {
     display: none;
   }
   .hero-banner-container{
