@@ -29,7 +29,6 @@ const Item = ({
 						<BsArrowRightCircle className="featured-arrow-icon" />
 						<div className="featured-product-button-text">Buy Now!</div>
 					</div>
-					
 				</div>
 			</Link>
 		</div>

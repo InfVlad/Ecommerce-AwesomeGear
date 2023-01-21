@@ -1,12 +1,13 @@
 import React from "react";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 import { FaShoppingCart, FaUser } from "react-icons/fa";
 import Cart from "./Cart";
 import { useStateContext } from "../context/StateContext";
 
 const Navbar = () => {
 	const { showCart, setShowCart, totalQuantities } = useStateContext();
-
+	const { status, data: session } = useSession();
 	return (
 		<div className="navbar-container">
 			<Link href={"/"}>
@@ -25,10 +26,23 @@ const Navbar = () => {
 					<span className="cart-item-qty">{totalQuantities}</span>
 				</button>
 				<div className="user-container">
-					<div className="user-icon">
-						<FaUser className="fa-icon" />
+					{status === "loading"
+						? ""
+						: session?.user && (
+								<div className="user-icon">
+									<FaUser className="fa-icon" />
+								</div>
+						  )}
+
+					<div className="user-name">
+						{status === "loading" ? (
+							"Loading"
+						) : session?.user ? (
+							session.user.name
+						) : (
+							<Link href="/login">Login</Link>
+						)}
 					</div>
-					<div className="user-name">Vladimir Infante</div>
 				</div>
 			</div>
 			{showCart && <Cart />}
