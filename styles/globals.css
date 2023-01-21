@@ -1096,6 +1096,46 @@ margin-top: 160px;
   transform: translateX(0.5rem);
 }
 
+.login-form-container{
+  margin: 24vh auto;
+  max-width: 400px;
+  color: var(--text-color);
+  font-size: var(--h2-font-size);
+  /* height: 65vh; */
+
+}
+.login-form-top-text{
+  margin-bottom: 1rem;
+  font-size: var(--h1-font-size);
+  font-weight: var(--font-bold);
+  line-height: 1.75rem;
+  text-align: center;
+}
+.login-email, .login-password, .login-button{
+  margin-bottom: 1rem;
+}
+.email-input, .password-input{
+  margin-top: 0.6rem;
+  height: 2rem;
+  width: 100%;
+  border-radius: 8px;
+  font-size: 1.2rem;
+}
+.login-btn{
+
+  border-radius: 15px;
+  background-color: var(--first-color);
+  font-size: 1.5rem;
+  border-style: none;
+  color: var(--text-color);
+  padding: 0.4rem;
+  width: 7rem;
+  cursor: pointer;
+}
+.login-botton-text .link{
+  color: var(--first-color);
+}
+
 @media screen and (max-width:1066px){
 .footer-banner-container{
   height: 500px;

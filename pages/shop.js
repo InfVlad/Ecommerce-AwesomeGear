@@ -3,7 +3,7 @@ import { client } from "../lib/client";
 import {  Product } from "../components";
 
 
-
+let manufacturer = ["ASUS", "Logitech G", "Corsair"];
 const Shop = ({products}) => {
 	return (
 		<div>
