@@ -9,6 +9,8 @@ export const StateContext = ({ children }) => {
 	const [totalPrice, setTotalPrice] = useState(0);
 	const [totalQuantities, setTotalQuantities] = useState(0);
 	const [qty, setQty] = useState(1);
+	const [inCheckoutProcess, setInCheckoutProcess] = useState(false);
+	const [shippingAddress, setShippingAddress] = useState({})
 
 	let foundProduct;
 	let index;
@@ -19,7 +21,9 @@ export const StateContext = ({ children }) => {
 		);
 
 		setTotalPrice(
-			(prevTotalPrice) => prevTotalPrice + Math.round(((product.price * quantity)+ Number.EPSILON)*100)/100
+			(prevTotalPrice) =>
+				prevTotalPrice +
+				Math.round((product.price * quantity + Number.EPSILON) * 100) / 100
 		);
 		setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + quantity);
 		if (checkProductInCart) {
@@ -93,6 +97,7 @@ export const StateContext = ({ children }) => {
 				totalPrice,
 				totalQuantities,
 				qty,
+				inCheckoutProcess,
 				incQty,
 				decQty,
 				onAdd,
@@ -103,6 +108,7 @@ export const StateContext = ({ children }) => {
 				setCartItems,
 				setTotalPrice,
 				setTotalQuantities,
+				setInCheckoutProcess,
 			}}
 		>
 			{children}

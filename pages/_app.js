@@ -3,19 +3,43 @@ import "../styles/globals.css";
 import { Layout } from "../components";
 import { StateContext } from "../context/StateContext";
 import { Toaster } from "react-hot-toast";
-import { SessionProvider } from "next-auth/react";
+import { SessionProvider, useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
+	const Auth = ({ children }) => {
+		const router = useRouter();
+		const { status } = useSession({
+			required: true,
+			onUnauthenticated() {
+				router.push("/unauthorized?message=login required");
+			},
+		});
+		if (status === "loading") {
+			//TO-DO: add loader
+			return <div>Loading...</div>;
+		}
+		return children;
+	};
+
 	return (
 		<SessionProvider session={session}>
 			<StateContext>
 				<Layout>
 					<Toaster />
-					<Component {...pageProps} />
+					{Component.auth ? (
+						<Auth>
+							<Component {...pageProps} />
+						</Auth>
+					) : (
+						<Component {...pageProps} />
+					)}
 				</Layout>
 			</StateContext>
 		</SessionProvider>
 	);
+
+	
 }
 
 export default MyApp;

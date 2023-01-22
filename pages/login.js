@@ -5,16 +5,23 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useRouter } from "next/router";
 import getError from "../lib/error";
+import { useStateContext } from "../context/StateContext";
 
 const Login = () => {
 	const { data: session } = useSession();
 
 	const router = useRouter();
 	const { redirect } = router.query;
+	const { inCheckoutProcess, setInCheckoutProcess } = useStateContext();
 
 	useEffect(() => {
 		if (session?.user) {
-			router.push(redirect || "/");
+			if (!inCheckoutProcess) {
+				router.push(redirect || "/");
+			} else {
+				setInCheckoutProcess(false)
+				router.push( redirect || "/checkout")
+			}
 		}
 	}, [router, session, redirect]);
 	const {

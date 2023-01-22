@@ -10,7 +10,8 @@ import { TiDeleteOutline } from "react-icons/ti";
 import toast from "react-hot-toast";
 import { useStateContext } from "../context/StateContext";
 import { urlFor } from "../lib/client";
-import getStripe from "../lib/getStripe";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 
 const Cart = () => {
 	const cartRef = useRef();
@@ -23,21 +24,18 @@ const Cart = () => {
 		onRemove,
 	} = useStateContext();
 
-	const handleCheckout = async () => {
-		const stripe = await getStripe();
+	const { data: session } = useSession();
+	const router = useRouter();
 
-		const response = await fetch("/api/stripe", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify(cartItems),
-		});
-		if (response.statusCode === 500) return;
-
-		const data = await response.json();
-		toast.loading("Redirecting...");
-		stripe.redirectToCheckout({ sessionId: data.id });
+	const handlePlaceOrder = () => {
+		if (!session?.user) {
+			toast("Please login before placing an order");
+			setShowCart(false);
+			setTimeout(() => router.push("/login"), 600);
+		} else {
+			setShowCart(false);
+			router.push("/checkout");
+		}
 	};
 
 	return (
@@ -123,8 +121,8 @@ const Cart = () => {
 							<h3>${totalPrice}</h3>
 						</div>
 						<div className="btn-container">
-							<button type="button" className="btn" onClick={handleCheckout}>
-								Pay with Stripe
+							<button type="button" className="btn" onClick={handlePlaceOrder}>
+								Proceed to Checkout
 							</button>
 						</div>
 					</div>

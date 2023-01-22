@@ -76,7 +76,6 @@ body, * {
   margin: 0;
   font-family: var(--body-font);
   box-sizing: border-box;
-
 }
 ::-webkit-scrollbar {
   width: 0px;
@@ -103,6 +102,8 @@ a {
 
 .body {
   background-color: var(--bg-color);
+  height: 100vh;
+  width: 100vw;
 }
 
 /*======================== Navbar =======================*/
@@ -553,8 +554,8 @@ a {
 
 .footer-container{
   color: var(--text-color);
+  background-color: var(--bg-color);
   text-align: center;
-  margin-top: 20px;
   padding: 30px 10px;
   font-weight: 700;
   display: flex;
@@ -1301,7 +1302,6 @@ margin-top: 160px;
 }
 .flex h4{
   font-size: 16px;
-   color: black;
 }
 .cart-bottom{
   padding: 30px;
@@ -1485,6 +1485,33 @@ margin-top: 160px;
     padding: 10px 13px;
   }
 
+  .cart-container{
+    width: 325px;
+  }
+
+  .product-container{
+  max-height: 70vh;
+  padding: 10px 5px;
+  max-width: 95vw;
+  margin-left: auto;
+  }
+  .product{
+   gap: 10px;
+   padding: 10px;
+  }
+
+  .btn-container{
+    width: 210px;
+  }
+  .cart-bottom{
+    padding: 65px;
+  }
+  .quantity-desc span {
+    padding: 6px 6px;
+}
+  .item-desc .flex {
+    width: 160px;
+}
 }
 @media screen and (max-width:327px) {
   .hero-product-name{
