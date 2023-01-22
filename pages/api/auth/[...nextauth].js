@@ -4,6 +4,7 @@ import User from "../../../models/User";
 import bcryptjs from "bcryptjs";
 import CredentialsProvider from "next-auth/providers/credentials";
 
+
 export default nextAuth({
 	session: {
 		strategy: "jwt",
@@ -40,4 +41,5 @@ export default nextAuth({
 			},
 		}),
 	],
+	secret: process.env.NEXTAUTH_SECRET,
 });
