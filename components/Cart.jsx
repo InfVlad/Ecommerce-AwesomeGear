@@ -22,6 +22,7 @@ const Cart = () => {
 		setShowCart,
 		toggleCartItemQuantity,
 		onRemove,
+		setInCheckoutProcess,
 	} = useStateContext();
 
 	const { data: session } = useSession();
@@ -30,6 +31,7 @@ const Cart = () => {
 	const handlePlaceOrder = () => {
 		if (!session?.user) {
 			toast("Please login before placing an order");
+			setInCheckoutProcess(true);
 			setShowCart(false);
 			setTimeout(() => router.push("/login"), 600);
 		} else {

@@ -55,7 +55,7 @@ const Navbar = () => {
 									<div className="dropdown-button-text">
 										{session.user.name}
 									</div>
-								</Menu.Button>{" "}
+								</Menu.Button>
 								<Menu.Items className="dropdown-menu-items">
 									<Menu.Item className="dropdown-menu-item">
 										<DropdownLink className="dropdown-link" href="/profile">

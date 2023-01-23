@@ -10,20 +10,22 @@ export const StateContext = ({ children }) => {
 	const [totalQuantities, setTotalQuantities] = useState(0);
 	const [qty, setQty] = useState(1);
 	const [inCheckoutProcess, setInCheckoutProcess] = useState(false);
-	const [shippingAddress, setShippingAddress] = useState({})
+	const [shippingAddress, setShippingAddress] = useState({});
 
 	let foundProduct;
 	let index;
+
+	const round = (number) => {
+		return Math.round((number + Number.EPSILON) * 100) / 100;
+	};
 
 	const onAdd = (product, quantity) => {
 		const checkProductInCart = cartItems.find(
 			(item) => item._id === product._id
 		);
 
-		setTotalPrice(
-			(prevTotalPrice) =>
-				prevTotalPrice +
-				Math.round((product.price * quantity + Number.EPSILON) * 100) / 100
+		setTotalPrice((prevTotalPrice) =>
+			round(prevTotalPrice + product.price * quantity)
 		);
 		setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + quantity);
 		if (checkProductInCart) {
@@ -47,7 +49,7 @@ export const StateContext = ({ children }) => {
 		foundProduct = cartItems.find((item) => item._id === product._id);
 		const newCartItems = cartItems.filter((item) => item._id !== product._id);
 		setCartItems(newCartItems);
-		setTotalPrice((prev) => prev - foundProduct.price * foundProduct.quantity);
+		setTotalPrice((prev) => round(prev - foundProduct.price * foundProduct.quantity));
 		setTotalQuantities((prev) => prev - foundProduct.quantity);
 	};
 
@@ -63,7 +65,7 @@ export const StateContext = ({ children }) => {
 			});
 
 			setCartItems(newCartItems);
-			setTotalPrice((prev) => prev + foundProduct.price);
+			setTotalPrice((prev) => round(prev + foundProduct.price));
 			setTotalQuantities((prev) => prev + 1);
 		} else if (value === "dec") {
 			if (foundProduct.quantity > 1) {
@@ -73,7 +75,7 @@ export const StateContext = ({ children }) => {
 				});
 
 				setCartItems(newCartItems);
-				setTotalPrice((prev) => prev - foundProduct.price);
+				setTotalPrice((prev) => round(prev - foundProduct.price));
 				setTotalQuantities((prev) => prev - 1);
 			}
 		}
@@ -89,6 +91,10 @@ export const StateContext = ({ children }) => {
 		});
 	};
 
+	// useEffect(()=>{
+	// 	setTotalPrice(prev=>(Math.round((prev + Number.EPSILON) * 100) / 100))
+	// },[totalPrice])
+
 	return (
 		<Context.Provider
 			value={{
@@ -98,6 +104,7 @@ export const StateContext = ({ children }) => {
 				totalQuantities,
 				qty,
 				inCheckoutProcess,
+				shippingAddress,
 				incQty,
 				decQty,
 				onAdd,
@@ -109,6 +116,7 @@ export const StateContext = ({ children }) => {
 				setTotalPrice,
 				setTotalQuantities,
 				setInCheckoutProcess,
+				setShippingAddress,
 			}}
 		>
 			{children}

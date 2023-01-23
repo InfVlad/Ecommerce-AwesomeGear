@@ -14,6 +14,7 @@ const ProductDetails = ({ product, products }) => {
 	const [index, setIndex] = useState(0);
 	const { decQty, incQty, qty, onAdd, setQty, setShowCart } = useStateContext();
 
+	// products.forEach(item=>{console.log(item.name, item._id)})
 	const handleBuyNow = () => {
 		onAdd(product, qty);
 		setShowCart(true)

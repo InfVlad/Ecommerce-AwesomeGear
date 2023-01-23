@@ -41,5 +41,5 @@ const Success = () => {
 		</div>
     )
 };
-
+Success.auth=true
 export default Success;
