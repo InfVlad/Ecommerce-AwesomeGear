@@ -1,10 +1,8 @@
-import axios from 'axios';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useReducer } from 'react';
 import Layout from '../../components/Layout';
-import { getError } from '../../lib/error';
 import { getData } from '../../lib/utils';
 
 

@@ -32,7 +32,6 @@ const HeroBanner = ({ heroBannerData }) => {
 				<h1>{heroBanner.largeText1}</h1>
 				<p className="old-price">${heroBanner.oldPrice}</p>
 				<p className="new-price">${heroBanner.price}</p>
-				{/* The headset image was too big, im keeping it this way */}
 				<img
 					src={urlFor(heroBanner.image)}
 					alt="best sellers"
