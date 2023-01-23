@@ -11,6 +11,7 @@ const Layout = ({children}) => {
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" ></link>
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" ></link>
         <title>Awesome Gear - Gaming Store</title>
+        <meta name="description" content="Awesome Gear is the best gaming Ecommerce, we have the best deals!" />
       </Head>
       <header>
         <Navbar />

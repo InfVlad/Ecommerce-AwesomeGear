@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import Link from "next/link";
 import {
 	AiOutlineMinus,
@@ -39,7 +39,11 @@ const Cart = () => {
 			router.push("/checkout");
 		}
 	};
+	
+	useEffect(()=>{
+	console.log(cartItems);
 
+	},[cartItems])
 	return (
 		<div className="cart-wrapper" ref={cartRef}>
 			<div className="cart-container">

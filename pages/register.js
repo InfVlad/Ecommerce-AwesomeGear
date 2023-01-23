@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/router";
 import getError from "../lib/error";
 import { useStateContext } from "../context/StateContext";
+import { postData } from "../lib/utils";
 
 const Register = () => {
 	const { data: session } = useSession();
@@ -38,22 +39,15 @@ const Register = () => {
 			password,
 		};
 		try {
-			const res = await fetch("/api/auth/signup", {
-				method: "POST",
-				body: JSON.stringify(userData),
-				headers: {
-					"Content-Type": "application/json",
-				},
-			});
-			const data = await res.json()
-			if(data.err){
-			toast.error(data.err)
+			const data = await postData("/api/auth/signup",userData)
+			if(data.error){
+			toast.error(data.error)
 			return;
 			} else {
 				toast.success(data.msg)
 			}
-		} catch (err) {
-			toast.error(getError(err));
+		} catch (error) {
+			toast.error(getError(error));
 			return;
 		}
 		try {
@@ -65,8 +59,8 @@ const Register = () => {
 			if (result.error) {
 				toast.error(result.error);
 			}
-		} catch (err) {
-			toast.error(getError(err));
+		} catch (error) {
+			toast.error(getError(error));
 		}
 	};
 	return (

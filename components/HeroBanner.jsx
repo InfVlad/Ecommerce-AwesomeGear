@@ -31,16 +31,12 @@ const HeroBanner = ({ heroBannerData }) => {
 				<h3>{heroBanner.midText}</h3>
 				<h1>{heroBanner.largeText1}</h1>
 				<p className="old-price">${heroBanner.oldPrice}</p>
-				<p className="new-price">${heroBanner.price}</p>{" "}
+				<p className="new-price">${heroBanner.price}</p>
 				{/* The headset image was too big, im keeping it this way */}
 				<img
 					src={urlFor(heroBanner.image)}
 					alt="best sellers"
-					className={
-						heroBanner.largeText1 === "HEADSET"
-							? "hero-banner-image smallerImage"
-							: "hero-banner-image"
-					}
+					className={"hero-banner-image"}
 				/>
 				<div>
 					<Link href={`/product/${heroBanner.slug.current}`}>

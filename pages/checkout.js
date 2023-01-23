@@ -1,6 +1,5 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { useRouter } from "next/router";
 import getStripe from "../lib/getStripe";
 import { useStateContext } from "../context/StateContext";
 import toast from "react-hot-toast";
@@ -8,16 +7,16 @@ import { urlFor } from "../lib/client";
 import {
 	AiOutlineMinus,
 	AiOutlinePlus,
-	AiOutlineLeft,
 	AiOutlineShopping,
 } from "react-icons/ai";
 import { TiDeleteOutline } from "react-icons/ti";
 import Link from "next/link";
+import { getImage, postData } from "../lib/utils";
+import getError from "../lib/error";
 
 const Checkout = () => {
 	const {
 		totalPrice,
-		totalQuantities,
 		cartItems,
 		setShowCart,
 		toggleCartItemQuantity,
@@ -29,6 +28,7 @@ const Checkout = () => {
 		handleSubmit,
 		register,
 		formState: { errors },
+		getValues,
 	} = useForm();
 
 	const handleCheckout = async ({
@@ -46,21 +46,44 @@ const Checkout = () => {
 			postalCode,
 			country,
 		}));
-		console.log(shippingAddress);
-		const stripe = await getStripe();
+		const orderItems = cartItems.map((item) => ({
+			name: item.name,
+			quantity: item.quantity,
+			image: getImage(item),
+			price: item.price,
+		}));
+		const order = {
+			orderItems,
+			shippingAddress,
+			itemsPrice: totalPrice,
+			shippingPrice: 0,
+			totalPrice,
+			isPaid: false,
+			paidAt: undefined,
+		};
+		console.log(order);
+		try {
+			const stripe = await getStripe();
 
-		const response = await fetch("/api/stripe", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify(cartItems),
-		});
-		if (response.statusCode === 500) return;
+			const data = await postData("/api/stripe", cartItems);
 
-		const data = await response.json();
-		toast.loading("Redirecting...");
-		stripe.redirectToCheckout({ sessionId: data.id });
+			if (data.statusCode === 500) return;
+			// TO-DO: is paid should be changed to true After the payment
+			order.paidAt = Date.now();
+			order.isPaid = true;
+			const orderResponse = await postData("/api/orders", order);
+			if (orderResponse.error) {
+				toast.error(orderResponse.error);
+				return;
+			} else {
+				toast.success(orderResponse.msg);
+				console.log(orderResponse.order);
+			}
+			toast.loading("Redirecting...");
+			stripe.redirectToCheckout({ sessionId: data.id });
+		} catch (error) {
+			toast.error(getError(error));
+		}
 	};
 
 	return (

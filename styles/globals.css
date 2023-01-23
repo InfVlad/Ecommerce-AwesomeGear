@@ -1264,25 +1264,22 @@ padding: 30px 65px;
   display: flex;
   justify-content: center;
 }
-
-
-/* .shipping-form-item textarea:focus{
-  border: 3px solid var(--first-color);
-  box-shadow: 0 0 10px var(--first-color);
-} */
-/* .login-btn{
-
-  border-radius: 15px;
-  background-color: var(--first-color);
-  font-size: 1.5rem;
-  border-style: none;
+.order-history-title{
   color: var(--text-color);
-  padding: 0.4rem;
-  width: 7rem;
-  cursor: pointer;
-} */
-
-
+}
+.table-container{
+  color: var(--text-color);
+}
+.column-title{
+  text-align: left;
+  padding: 1.3rem;
+}
+.table-border{
+  border-color: var(--first-color);
+}
+.table-item{
+  padding: 1.4rem;
+}
 
 @media screen and (max-width:1066px){
 .footer-banner-container{
