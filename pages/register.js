@@ -32,19 +32,31 @@ const Register = () => {
 	} = useForm();
 
 	const submitHandler = async ({ name, email, password }) => {
+		const userData = {
+			name,
+			email,
+			password,
+		};
 		try {
-			const data = {
-				name,
-				email,
-				password,
-			};
-			await fetch("/api/auth/signup", {
+			const res = await fetch("/api/auth/signup", {
 				method: "POST",
-				body: JSON.stringify(data),
+				body: JSON.stringify(userData),
 				headers: {
 					"Content-Type": "application/json",
 				},
 			});
+			const data = await res.json()
+			if(data.err){
+			toast.error(data.err)
+			return;
+			} else {
+				toast.success(data.msg)
+			}
+		} catch (err) {
+			toast.error(getError(err));
+			return;
+		}
+		try {
 			const result = await signIn("credentials", {
 				redirect: false,
 				email,
