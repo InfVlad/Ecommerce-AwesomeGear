@@ -14,6 +14,7 @@ const handler = async (req, res) => {
 		await db.disconnect();
 		res.status(200).send(order);
 	} catch (error){
+		console.log(error)
 		res.status(404).json({error})
 	}
 };
