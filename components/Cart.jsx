@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import Link from "next/link";
 import {
 	AiOutlineMinus,
@@ -10,8 +10,9 @@ import { TiDeleteOutline } from "react-icons/ti";
 import toast from "react-hot-toast";
 import { useStateContext } from "../context/StateContext";
 import { urlFor } from "../lib/client";
-import { useSession } from "next-auth/react";
+import { useSession, signIn } from "next-auth/react";
 import { useRouter } from "next/router";
+import getError from "../lib/error";
 
 const Cart = () => {
 	const cartRef = useRef();
@@ -27,23 +28,40 @@ const Cart = () => {
 
 	const { data: session } = useSession();
 	const router = useRouter();
+	const { redirect } = router.query;
+	const loginDemo = async (email, password) => {
+		try {
+			const result = await signIn("credentials", {
+				redirect: false,
+				email,
+				password,
+			});
+			if (result.error) {
+				toast.error(result.error);
+			}
+		} catch (err) {
+			toast.error(getError(err));
+		}
+	};
 
 	const handlePlaceOrder = () => {
+		setShowCart(false);
+
 		if (!session?.user) {
-			toast("Please login before placing an order");
-			setInCheckoutProcess(true);
-			setShowCart(false);
-			setTimeout(() => router.push("/login"), 600);
+			const asDemo = confirm("Do you want to login with a Demo Account?");
+			if (asDemo) {
+				loginDemo("user1@example.com", "123456");
+				router.push(redirect || "/checkout");
+			} else {
+				toast("Please login before placing an order");
+				setInCheckoutProcess(true);
+				setTimeout(() => router.push("/login"), 600);
+			}
 		} else {
-			setShowCart(false);
 			router.push("/checkout");
 		}
 	};
-	
-	useEffect(()=>{
-	console.log(cartItems);
 
-	},[cartItems])
 	return (
 		<div className="cart-wrapper" ref={cartRef}>
 			<div className="cart-container">

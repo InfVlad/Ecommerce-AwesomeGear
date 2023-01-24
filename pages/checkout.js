@@ -11,7 +11,7 @@ import {
 } from "react-icons/ai";
 import { TiDeleteOutline } from "react-icons/ti";
 import Link from "next/link";
-import { getImage, postData } from "../lib/utils";
+import { getImage, postData, countryList } from "../lib/utils";
 import getError from "../lib/error";
 
 const Checkout = () => {
@@ -21,37 +21,21 @@ const Checkout = () => {
 		setShowCart,
 		toggleCartItemQuantity,
 		onRemove,
-		shippingAddress,
-		setShippingAddress,
 	} = useStateContext();
 	const {
 		handleSubmit,
 		register,
 		formState: { errors },
-		getValues,
 	} = useForm();
 
-	const handleCheckout = async ({
-		fullName,
-		address,
-		city,
-		postalCode,
-		country,
-	}) => {
-		setShippingAddress((prev) => ({
-			...prev,
-			fullName,
-			address,
-			city,
-			postalCode,
-			country,
-		}));
+	const handleCheckout = async (data) => {
 		const orderItems = cartItems.map((item) => ({
 			name: item.name,
 			quantity: item.quantity,
 			image: getImage(item),
 			price: item.price,
 		}));
+		const shippingAddress = { ...data };
 		const order = {
 			orderItems,
 			shippingAddress,
@@ -61,12 +45,10 @@ const Checkout = () => {
 			isPaid: false,
 			paidAt: undefined,
 		};
-		console.log(order);
+		// console.log(order);
 		try {
 			const stripe = await getStripe();
-
 			const data = await postData("/api/stripe", cartItems);
-
 			if (data.statusCode === 500) return;
 			// TO-DO: is paid should be changed to true After the payment
 			order.paidAt = Date.now();
