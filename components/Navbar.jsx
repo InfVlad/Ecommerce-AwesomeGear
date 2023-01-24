@@ -5,7 +5,6 @@ import { FaShoppingCart, FaUser } from "react-icons/fa";
 import Cart from "./Cart";
 import { useStateContext } from "../context/StateContext";
 import { Menu } from "@headlessui/react";
-import DropdownLink from "./DropdownLink";
 
 const Navbar = () => {
 	const {
@@ -58,17 +57,14 @@ const Navbar = () => {
 								</Menu.Button>
 								<Menu.Items className="dropdown-menu-items">
 									<Menu.Item className="dropdown-menu-item">
-										<DropdownLink className="dropdown-link" ref={"/profile"}>
-											Profile
-										</DropdownLink>
+										<div className="dropdown-link">
+											<Link href={"/profile"}>Profile</Link>
+										</div>
 									</Menu.Item>
 									<Menu.Item className="dropdown-menu-item">
-										<DropdownLink
-											className="dropdown-link"
-											ref={"/order-history"}
-										>
-											Order History
-										</DropdownLink>
+										<div className="dropdown-link">
+											<Link href={"/order-history"}>Order History</Link>
+										</div>
 									</Menu.Item>
 									<Menu.Item className="dropdown-menu-item">
 										<a
