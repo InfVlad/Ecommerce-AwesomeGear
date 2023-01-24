@@ -44,14 +44,14 @@ const Cart = () => {
 		}
 	};
 
-	const handlePlaceOrder = () => {
+	const handlePlaceOrder = async () => {
 		setShowCart(false);
 
 		if (!session?.user) {
 			const asDemo = confirm("Do you want to login with a Demo Account?");
 			if (asDemo) {
-				loginDemo("user1@example.com", "123456");
-				router.push(redirect || "/checkout");
+				await loginDemo("user1@example.com", "123456");
+				router.push( redirect || "/checkout")
 			} else {
 				toast("Please login before placing an order");
 				setInCheckoutProcess(true);

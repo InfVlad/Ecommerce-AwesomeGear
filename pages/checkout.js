@@ -11,8 +11,9 @@ import {
 } from "react-icons/ai";
 import { TiDeleteOutline } from "react-icons/ti";
 import Link from "next/link";
-import { getImage, postData, countryList } from "../lib/utils";
+import { getImage, postData } from "../lib/utils";
 import getError from "../lib/error";
+import { resolvePreset } from "@babel/core/lib/config/files";
 
 const Checkout = () => {
 	const {
@@ -45,21 +46,24 @@ const Checkout = () => {
 			isPaid: false,
 			paidAt: undefined,
 		};
-		// console.log(order);
 		try {
 			const stripe = await getStripe();
-			const data = await postData("/api/stripe", cartItems);
-			if (data.statusCode === 500) return;
+			const res = await postData("/api/stripe", cartItems);
+			const data = await res.json();
+			console.log("stripe res", res, "stripe data", data)
+			if(res.error) console.log(res.error)
+			if (res.statusCode === 500) return;
 			// TO-DO: is paid should be changed to true After the payment
 			order.paidAt = Date.now();
 			order.isPaid = true;
 			const orderResponse = await postData("/api/orders", order);
+			const orderData = await orderResponse.json();
+			console.log("orderResponse", orderResponse, "orderData", orderData)
 			if (orderResponse.error) {
 				toast.error(orderResponse.error);
 				return;
 			} else {
-				toast.success(orderResponse.msg);
-				console.log(orderResponse.order);
+				toast.success(orderData.msg);
 			}
 			toast.loading("Redirecting...");
 			stripe.redirectToCheckout({ sessionId: data.id });

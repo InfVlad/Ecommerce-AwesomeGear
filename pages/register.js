@@ -39,9 +39,10 @@ const Register = () => {
 			password,
 		};
 		try {
-			const data = await postData("/api/auth/signup",userData)
-			if(data.error){
-			toast.error(data.error)
+			const res = await postData("/api/auth/signup",userData);
+			const data = await res.json();
+			if(res.error){
+			toast.error(res.error)
 			return;
 			} else {
 				toast.success(data.msg)

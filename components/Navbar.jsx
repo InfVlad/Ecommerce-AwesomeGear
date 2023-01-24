@@ -58,14 +58,14 @@ const Navbar = () => {
 								</Menu.Button>
 								<Menu.Items className="dropdown-menu-items">
 									<Menu.Item className="dropdown-menu-item">
-										<DropdownLink className="dropdown-link" href="/profile">
+										<DropdownLink className="dropdown-link" ref={"/profile"}>
 											Profile
 										</DropdownLink>
 									</Menu.Item>
 									<Menu.Item className="dropdown-menu-item">
 										<DropdownLink
 											className="dropdown-link"
-											href="/order-history"
+											ref={"/order-history"}
 										>
 											Order History
 										</DropdownLink>

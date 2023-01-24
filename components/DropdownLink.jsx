@@ -2,9 +2,9 @@ import Link from "next/link";
 import React from "react";
 
 const DropdownLink = (props) => {
-	let { href, children, ...rest } = props;
+	let { ref, children, ...rest } = props;
 	return (
-		<Link href={href}>
+		<Link href={ref}>
 			<a {...rest}>{children}</a>
 		</Link>
 	);
