@@ -11,13 +11,18 @@ const handler = async (req, res) => {
   } 
 
   const { user } = session;
-  await db.connect();
-  const newOrder = new Order({
-    ...req.body,
-    user: user._id,
-  });
+  try{
 
-  const order = await newOrder.save();
-  return res.status(201).json({msg : "Order created successfully", order});
+    await db.connect();
+    const newOrder = new Order({
+      ...req.body,
+      user: user._id,
+    });
+  
+    const order = await newOrder.save();
+    return res.status(201).json({msg : "Order created successfully", order});
+  } catch(error) {
+    return res.status(422).json({error})
+  }
 };
 export default handler;

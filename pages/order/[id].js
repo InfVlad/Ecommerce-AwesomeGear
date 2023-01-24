@@ -14,11 +14,12 @@ const OrderScreen = () => {
   useEffect(() => {
     const fetchOrder = async () => {
       try {
-        const data  = await getData(`/api/orders/${orderId}`);
-        if (data.error) {
-            console.log(data.error);
+        const res  = await getData(`/api/orders/${orderId}`);
+        if (res.error) {
+            console.log(res.error);
             return;
         } else {
+          const data = await res.json()
             console.log(data)
         }
       } catch (err) {

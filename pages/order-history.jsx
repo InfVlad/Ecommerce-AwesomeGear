@@ -16,7 +16,6 @@ const OrderHistory = () => {
 				} else {
 					setError(data.error);
 				}
-
 				console.log(data);
                 setOrders(data);
 			} catch (error) {

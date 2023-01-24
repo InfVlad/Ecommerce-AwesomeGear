@@ -28,16 +28,21 @@ const handler = async (req, res) => {
 		res.status(422).json({ error: "User already exists!" });
 		return;
 	}
+	try{
 
-	const newUser = new User({
-		name,
-		email,
-		password: bcryptjs.hashSync(password),
-		isAdmin: false,
-	});
-
-	await newUser.save();
-	await db.disconnect();
+		const newUser = new User({
+			name,
+			email,
+			password: bcryptjs.hashSync(password),
+			isAdmin: false,
+		});
+	
+		await newUser.save();
+		await db.disconnect();
+	} catch(error){
+		res.status(422).json({error})
+		return 
+	}
 	res.status(201).json({
 		msg: "Created user!",
   });
