@@ -11,9 +11,8 @@ import {
 } from "react-icons/ai";
 import { TiDeleteOutline } from "react-icons/ti";
 import Link from "next/link";
-import { getImage, postData } from "../lib/utils";
+import { getImage, postData, putData } from "../lib/utils";
 import getError from "../lib/error";
-import { resolvePreset } from "@babel/core/lib/config/files";
 
 const Checkout = () => {
 	const {
@@ -47,25 +46,38 @@ const Checkout = () => {
 			paidAt: undefined,
 		};
 		try {
-			const stripe = await getStripe();
-			const res = await postData("/api/stripe", cartItems);
-			const data = await res.json();
-			console.log("stripe res", res, "stripe data", data)
-			if(res.error) console.log(res.error)
-			if (res.statusCode === 500) return;
-			// TO-DO: is paid should be changed to true After the payment
-			order.paidAt = Date.now();
-			order.isPaid = true;
+
+			// TO-DO: isPaid should be changed to true After the payment is successful
+
 			const orderResponse = await postData("/api/orders", order);
 			const orderData = await orderResponse.json();
 			console.log("orderResponse", orderResponse, "orderData", orderData)
+			const orderId = orderData.order._id;
 			if (orderResponse.error) {
 				toast.error(orderResponse.error);
 				return;
 			} else {
 				toast.success(orderData.msg);
 			}
-			toast.loading("Redirecting...");
+
+			const stripe = await getStripe();
+			const res = await postData("/api/stripe", {cartItems, orderId});
+			const data = await res.json();
+			console.log("stripe res",res);
+			console.log("stripe data", data);
+
+
+			if (res.statusCode === 500) return;
+
+			toast.loading("Redirecting to Stripe...");
+			//yes, im updating the isPaid status and its not even successful yet, 
+			//TO-DO: create a webhook with stripe api and wait for success
+			//but for now i made the api for update and im gonna use it,
+			//either way if its canceled the order its gonna be deleted
+			const updateResult = await putData(`/api/orders/${orderId}/pay`,{orderId})
+			const dataPaymentUpdate = await updateResult.json();
+
+			console.log(dataPaymentUpdate.message);
 			stripe.redirectToCheckout({ sessionId: data.id });
 		} catch (error) {
 			toast.error(getError(error));

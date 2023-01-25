@@ -2,34 +2,40 @@ import React, { useEffect } from "react";
 import Link from "next/link";
 import { BsBagCheckFill } from "react-icons/bs";
 import { useStateContext } from "../context/StateContext";
-import { runFireworks } from "../lib/utils";
+import { runFireworks, putData } from "../lib/utils";
+import { useRouter } from "next/router";
 
 const Success = () => {
 	const { setCartItems, setTotalPrice, setTotalQuantities } = useStateContext();
+	// const router = useRouter();
+	// const { status, order } = router.query;
+
+	// const updateOrderPayment = async () => {
+	// 	if (status && order && status === "success") {
+	// 		const res = await putData(`/api/orders/${order}/pay`,);
+	// 	}
+	// };
 
 	useEffect(() => {
-	  setCartItems([])
-	  setTotalPrice(0)
-	  setTotalQuantities(0)
-	  runFireworks();
-	  return () => {
-		
-	  }
-	}, [])
-	
+		setCartItems([]);
+		setTotalPrice(0);
+		setTotalQuantities(0);
+		runFireworks();
+		return () => {};
+	}, []);
 
 	return (
-        <div className="success-wrapper">
+		<div className="success-wrapper">
 			<div className="success">
 				<div className="icon">
-					<BsBagCheckFill/>
+					<BsBagCheckFill />
 				</div>
 				<h2>Thank you for your order!</h2>
 				<p className="email-msg">Check your email inbox for the receipt</p>
 				<p className="description">
 					If you have any questions, please email
 					<a href="mailto:order@example.com" className="email">
-					order@example.com
+						order@example.com
 					</a>
 				</p>
 				<Link href={"/"}>
@@ -39,7 +45,7 @@ const Success = () => {
 				</Link>
 			</div>
 		</div>
-    )
+	);
 };
-Success.auth=true
+Success.auth = true;
 export default Success;

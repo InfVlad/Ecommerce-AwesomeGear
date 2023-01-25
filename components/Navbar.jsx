@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
 import { FaShoppingCart, FaUser } from "react-icons/fa";
 import Cart from "./Cart";
 import { useStateContext } from "../context/StateContext";
 import { Menu } from "@headlessui/react";
+import { deleteData, paymentNotification } from "../lib/utils";
+import { useRouter } from "next/router";
 
 const Navbar = () => {
 	const {
@@ -15,7 +17,9 @@ const Navbar = () => {
 		setTotalPrice,
 		setTotalQuantities,
 	} = useStateContext();
+	const router = useRouter();
 	const { status, data: session } = useSession();
+	const { status: queryStatus, orderid: orderId } = router.query;
 
 	const logoutClickHandler = () => {
 		setCartItems([]);
@@ -23,6 +27,28 @@ const Navbar = () => {
 		setTotalQuantities(0);
 		signOut({ callbackUrl: "/login" });
 	};
+	useEffect(() => {
+		if (
+			(queryStatus && queryStatus === "canceled") ||
+			queryStatus === "success"
+		) {
+			paymentNotification(queryStatus, orderId);
+		}
+		const deleteCanceledOrder = async () => {
+			if (queryStatus && orderId && queryStatus === "canceled") {
+				try {
+					const res = await deleteData(`/api/orders/${orderId}/delete`, {
+						orderId,
+					});
+					const data = await res.json();
+					console.log(data);
+				} catch (error) {
+					console.log(error);
+				}
+			}
+		};
+		deleteCanceledOrder();
+	}, [queryStatus]);
 
 	return (
 		<div className="navbar-container">

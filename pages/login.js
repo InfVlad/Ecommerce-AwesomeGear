@@ -19,8 +19,8 @@ const Login = () => {
 			if (!inCheckoutProcess) {
 				router.push(redirect || "/");
 			} else {
-				setInCheckoutProcess(false)
-				router.push( redirect || "/checkout")
+				setInCheckoutProcess(false);
+				router.push(redirect || "/checkout");
 			}
 		}
 	}, [router, session, redirect]);

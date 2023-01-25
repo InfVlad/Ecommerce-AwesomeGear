@@ -1,4 +1,5 @@
 import Stripe from "stripe";
+import { putData } from "../../lib/utils";
 
 const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY);
 
@@ -14,7 +15,7 @@ export default async function handler(req, res) {
             shipping_options: [
                 { shipping_rate: 'shr_1Lv1wQFzRgi0pLUVRjlviJbV'},
             ],
-            line_items: req.body.map(item => {
+            line_items: req.body.cartItems.map(item => {
                 const img = item.image[0].asset._ref;
                 const newImage = img.replace("image-","https://cdn.sanity.io/images/y64aoq1q/production/").replace("-webp",".webp")
                 const newItem = {
@@ -24,7 +25,7 @@ export default async function handler(req, res) {
                             name: item.name,
                             images: [newImage],
                         },
-                        unit_amount: item.price * 100,
+                        unit_amount: Math.floor(item.price * 100),
                     },
                     adjustable_quantity: {
                         enabled: true,
@@ -34,8 +35,8 @@ export default async function handler(req, res) {
                 };
                 return newItem;
             }),
-            success_url: `${req.headers.origin}/success`,
-            cancel_url: `${req.headers.origin}/?canceled`,
+            success_url: `${req.headers.origin}/success?status=success&orderid=${req.body.orderId}`,
+            cancel_url: `${req.headers.origin}/?status=canceled&orderid=${req.body.orderId}`,
         }
 
       // Create Checkout Sessions from body params.
