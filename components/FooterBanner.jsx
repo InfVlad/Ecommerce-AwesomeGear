@@ -4,7 +4,6 @@ import { urlFor } from "../lib/client";
 
 const FooterBanner = ({
 	footerBanner: {
-		discount,
 		largeText1,
 		largeText2,
 		smallText,
@@ -26,7 +25,7 @@ const FooterBanner = ({
 					<p>{smallText}</p>
 					<h3>{midText}</h3>
 					<p>{desc}</p>
-					<Link href={`/product/${slug}`}>
+					<Link href={`/product/${slug.current}`}>
 						<button type="button">{buttonText}</button>
 					</Link>
 				</div>
