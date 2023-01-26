@@ -11,7 +11,7 @@ const MenuItem = ({ category, product: { image, price }, top, right }) => {
 				<div className="category-menu-lowest-price">$ {price}</div>
 				<div className="category-menu-bg-text">{category}</div>
 				<h1>{category}</h1>
-				<Link href={`/shop`}>
+				<Link href={`/shop?category=${category}`}>
 
 				<div className="category-menu-button-container">
 					<BsArrowRightCircle className="category-arrow-icon" />
