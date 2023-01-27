@@ -11,6 +11,7 @@ const Shop = ({ products }) => {
 	const [productsList, setProductsList] = useState(products);
 	const [query, setQuery] = useState("");
 	const [isOpen, setIsOpen] = useState(false);
+	const [sort, setSort] = useState("featured")
 
 	const manufacturersList = ["All", "ASUS", "Logitech G", "Corsair"];
 	const categoriesList = ["All", "Mouse pad", "Mouse", "Keyboard", "Headset"];
@@ -30,11 +31,27 @@ const Shop = ({ products }) => {
 	const handleManufacturer = (e) => {
 		setManufacturer(e.target.value);
 	};
+	const handleSort = (e) => {
+		setSort(e.target.value);
+	};
 	const showFilterHandler = () => {
 		setIsOpen(prev => !prev);
 		console.log(isOpen);
 	};
-	useEffect(() => {
+	const sortProducts = (products, filter) => {
+
+		//lets just say the original order is by "featured"
+		//sort array method doesn't make a copy, it changes the array in place
+		//normally i would make a deepcopy with JSON stringify and parse but in this case isn't needed
+		if(filter==="featured") return products;
+		if(filter==="low to high"){
+			return products.sort((a,b)=> a.price - b.price)
+		}
+		if(filter==="high to low"){
+			return products.sort((a,b)=> b.price - a.price)
+		}
+	}
+	const filterProducts = (products) => {
 		let updatedList = [...products];
 		if (query.length > 0) {
 			updatedList = updatedList.filter((product) =>
@@ -51,8 +68,13 @@ const Shop = ({ products }) => {
 				(product) => product.manufacturer === manufacturer
 			);
 		}
+		return updatedList;
+	}
+	useEffect(() => {
+		let updatedList = filterProducts(products)
+		updatedList = sortProducts(updatedList, sort);
 		setProductsList(updatedList);
-	}, [category, manufacturer, query]);
+	}, [category, manufacturer, query, sort]);
 
 	return (
 		<div className="shop-container">
@@ -103,6 +125,29 @@ const Shop = ({ products }) => {
 									</option>
 								);
 							})}
+						</select>
+						<label htmlFor="Sort Products" className="filter-label">
+							Sort by
+						</label>
+						<select value={sort} onChange={handleSort}>
+									<option
+										className="filter-option"
+										value={"featured"}
+									>
+										Featured
+									</option>
+									<option
+										className="filter-option"
+										value={"low to high"}
+									>
+										Price: Low to High
+									</option>
+									<option
+										className="filter-option"
+										value={"high to low"}
+									>
+										Price: High to Low
+									</option>
 						</select>
 					</div>)}
 				</div>
