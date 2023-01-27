@@ -75,9 +75,30 @@ body,
 	font-family: var(--body-font);
 	box-sizing: border-box;
 }
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
 	width: 0px;
-}
+} */
+
+* {
+	scrollbar-width: thin;
+	scrollbar-color: var(--first-color-second);
+  }
+  
+  /* Works on Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+	width: 20px;
+	height: 20px;
+  }
+  
+  *::-webkit-scrollbar-track {
+	background: var(--bg-color);
+  }
+  
+  *::-webkit-scrollbar-thumb {
+	background-color: var(--first-color-second);
+	border-radius: 20px;
+	/* border: 3px solid orange; */
+  }
 
 a {
 	color: inherit;
@@ -1323,6 +1344,7 @@ span.text-red {
 }
 .table-container {
 	color: var(--text-color);
+	overflow: auto;
 }
 .column-title {
 	text-align: left;
@@ -1645,6 +1667,25 @@ span.text-red {
 		-webkit-line-clamp: 3;
 		line-clamp: 3;
 		-webkit-box-orient: vertical;
+	}
+	.profile-container {
+		margin: 0.5rem auto;
+		margin-left: 5vw;
+		margin-right: 5vw;
+		overflow-x: scroll;
+
+	}
+	/* .table-container.order-history{
+		width: 500px;
+		min-width: 500px;
+		max-width: 500px;
+		overflow-x: auto;
+	} */
+	.table{
+		width: 500px;
+		/* min-width: 500px;
+		max-width: 500px; */
+		/* overflow-x: auto; */
 	}
 }
 
