@@ -79,27 +79,6 @@ body,
 	width: 0px;
 } */
 
-* {
-	scrollbar-width: thin;
-	scrollbar-color: var(--first-color-second);
-  }
-  
-  /* Works on Chrome, Edge, and Safari */
-  *::-webkit-scrollbar {
-	width: 20px;
-	height: 20px;
-  }
-  
-  *::-webkit-scrollbar-track {
-	background: var(--bg-color);
-  }
-  
-  *::-webkit-scrollbar-thumb {
-	background-color: var(--first-color-second);
-	border-radius: 20px;
-	/* border: 3px solid orange; */
-  }
-
 a {
 	color: inherit;
 	text-decoration: none;
@@ -1419,14 +1398,82 @@ span.text-red {
 .update-btn:hover {
 	transform: scale(1.1, 1.1);
 }
+.order-details-container{
+	margin-top: 10vh;
+	margin-left: 5vw;
+	color: var(--text-color);
+	max-width: 740px;
+	width: 80vw;
+	margin-right: auto;
+	margin-left: auto;
+}
+.order-details-title{
+	margin-bottom: 1rem;
+	font-size: 2rem;
+}
+.order-details-address{
+	font-size: 1.2rem;
+	margin-bottom: 0.9rem;
+}
+.order-details-id{
+	font-size: 1.2rem;
+	margin-bottom: 1rem;
+}
+.order-details-subtitle{
+	font-size: 1.6rem;
+	margin: 1.5rem 0;
+	border-bottom: 3px solid var(--first-color);
+	padding-bottom: 0.3rem;
+
+}
+.order-details-image-container{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.order-details-card{
+	margin-top: 1.5rem;
+	border: 3px solid var(--first-color);
+	padding: 0.3rem;
+	width: max-content;
+	border-radius: 15px;
+}
+.order-details-table-container{
+	width: 100%;
+	overflow: scroll;
+}
+.order-details-table-head{
+	font-size: 1.3rem;
+}
+.order-details-table-body{
+	font-size: 1.1rem;
+}
+
+.order-details-table-column-item, .order-details-table-column-title{
+	text-align: center;
+	padding: 0.8rem;
+}
+.order-details-summary{
+	width: 180px;
+}
+.order-details-summary-item{
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 0.8rem;
+}
+.order-details-summary-item.bold{
+	font-size: 1.2rem;
+	font-weight: var(--font-bold);
+}
+.order-details-payment{
+	font-size: 1.2rem;
+}
 
 @media screen and (max-width: 1066px) {
 	.footer-banner-container {
 		height: 500px;
 	}
-	/* .banner-desc{
-  flex-wrap: wrap;
-} */
+
 	.banner-desc h3 {
 		font-size: 20px;
 	}
@@ -1675,17 +1722,9 @@ span.text-red {
 		overflow-x: scroll;
 
 	}
-	/* .table-container.order-history{
-		width: 500px;
-		min-width: 500px;
-		max-width: 500px;
-		overflow-x: auto;
-	} */
+
 	.table{
 		width: 500px;
-		/* min-width: 500px;
-		max-width: 500px; */
-		/* overflow-x: auto; */
 	}
 }
 
