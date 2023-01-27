@@ -107,7 +107,7 @@ const Shop = ({ products }) => {
 					</div>)}
 				</div>
 
-				<div className="products-container">
+				<div className={"products-container " + (isOpen?"":"closed")}>
 					{productsList?.map((product) => (
 						<Product key={product._id} product={product} />
 					))}

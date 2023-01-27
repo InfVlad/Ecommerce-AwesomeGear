@@ -1438,6 +1438,9 @@ span.text-red {
 	.show-filter-btn{
 		display: inline-block;
 	}
+	.products-container.closed {
+		justify-content: center;
+	}
 	/* .closed .products-filters{
 		display: none;
 	} */
