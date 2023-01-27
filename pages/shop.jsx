@@ -5,14 +5,15 @@ import { useRouter } from "next/router";
 // import { useForm } from "react-hook-form";
 
 const Shop = ({ products }) => {
-	const manufacturersList = ["All", "ASUS", "Logitech G", "Corsair"];
-	const categoriesList = ["All", "Mouse pad", "Mouse", "Keyboard", "Headset"];
-
 	const router = useRouter();
 	const [category, setCategory] = useState("All");
 	const [manufacturer, setManufacturer] = useState("All");
 	const [productsList, setProductsList] = useState(products);
 	const [query, setQuery] = useState("");
+	const [isOpen, setIsOpen] = useState(false);
+
+	const manufacturersList = ["All", "ASUS", "Logitech G", "Corsair"];
+	const categoriesList = ["All", "Mouse pad", "Mouse", "Keyboard", "Headset"];
 
 	useEffect(() => {
 		if (!router.query.category) return;
@@ -28,6 +29,10 @@ const Shop = ({ products }) => {
 	};
 	const handleManufacturer = (e) => {
 		setManufacturer(e.target.value);
+	};
+	const showFilterHandler = () => {
+		setIsOpen(prev => !prev);
+		console.log(isOpen);
 	};
 	useEffect(() => {
 		let updatedList = [...products];
@@ -46,23 +51,14 @@ const Shop = ({ products }) => {
 				(product) => product.manufacturer === manufacturer
 			);
 		}
-		setProductsList(updatedList)
+		setProductsList(updatedList);
 	}, [category, manufacturer, query]);
-
-	const logStuff = () => {
-		console.log("Manufacturers", manufacturersList);
-
-		console.log("Categories", categoriesList);
-		console.log(category);
-		console.log(manufacturer);
-	};
 
 	return (
 		<div className="shop-container">
 			<div className="products-heading">
 				<h2>High Quality Products</h2>
 			</div>
-			<button onClick={logStuff}>Log Stuff</button>
 			<label htmlFor="Query" className="search-label">
 				Search products
 			</label>
@@ -74,29 +70,43 @@ const Shop = ({ products }) => {
 				}}
 				autoFocus
 			/>
+			<button className="show-filter-btn" onClick={showFilterHandler}>Show Filters</button>
 			<div className="shop-products">
-				<div className="products-filters">
-					<label htmlFor="Category">Category</label>
-					<select value={category} onChange={handleCategory}>
-						{categoriesList.map((category, i) => {
-							return (
-								<option value={category} key={i}>
-									{category}
-								</option>
-							);
-						})}
-					</select>
-					<label htmlFor="Manufacturer">Manufacturer</label>
-					<select value={manufacturer} onChange={handleManufacturer}>
-						{manufacturersList.map((manufacturer, i) => {
-							return (
-								<option value={manufacturer} key={i}>
-									{manufacturer}
-								</option>
-							);
-						})}
-					</select>
+				<div className={"products-filters-container "+ (isOpen?"":"closed")}>
+					{(<div
+						className={"products-filters" }
+					>
+						<label htmlFor="Category" className="filter-label">
+							Category
+						</label>
+						<select value={category} onChange={handleCategory}>
+							{categoriesList.map((category, i) => {
+								return (
+									<option className="filter-option" value={category} key={i}>
+										{category}
+									</option>
+								);
+							})}
+						</select>
+						<label htmlFor="Manufacturer" className="filter-label">
+							Manufacturer
+						</label>
+						<select value={manufacturer} onChange={handleManufacturer}>
+							{manufacturersList.map((manufacturer, i) => {
+								return (
+									<option
+										className="filter-option"
+										value={manufacturer}
+										key={i}
+									>
+										{manufacturer}
+									</option>
+								);
+							})}
+						</select>
+					</div>)}
 				</div>
+
 				<div className="products-container">
 					{productsList?.map((product) => (
 						<Product key={product._id} product={product} />

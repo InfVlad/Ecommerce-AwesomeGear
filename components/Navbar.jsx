@@ -88,11 +88,6 @@ const Navbar = () => {
 										</div>
 									</Menu.Item>
 									<Menu.Item className="dropdown-menu-item">
-										<div className="dropdown-link">
-											<Link href={"/order-history"}>Order History</Link>
-										</div>
-									</Menu.Item>
-									<Menu.Item className="dropdown-menu-item">
 										<a
 											className="dropdown-link"
 											href="#"

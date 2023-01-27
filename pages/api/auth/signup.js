@@ -4,7 +4,7 @@ import db from "../../../lib/db";
 
 const handler = async (req, res) => {
 	if (req.method !== "POST") {
-		return;
+		return res.status(405).send({ message: `${req.method} not supported` });
 	}
 	const { name, email, password } = req.body;
 	if (
