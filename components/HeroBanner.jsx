@@ -43,8 +43,7 @@ const HeroBanner = ({ heroBannerData }) => {
 			},
 		};
 	};
-	//i want the left text always enter the same direction
-	const textAnimation = (initialMovement, i) => {
+	const leftSidAnimation = (initialMovement, i) => {
 		
 		return {
 			initial: { translateX: -50 * initialMovement, opacity: 0 },
@@ -57,7 +56,8 @@ const HeroBanner = ({ heroBannerData }) => {
 			},
 		};
 	};
-	const iconAnimation = (i) => {
+	//im actually using this one for the image, the product name and description
+	const rightSideAnimation = (i) => {
 		return {
 			initial: {  opacity: 0 },
 			animate: { opacity: 1 },
@@ -72,33 +72,33 @@ const HeroBanner = ({ heroBannerData }) => {
 				<AnimatePresence>
 					<motion.p
 						key={heroBanner.smallText + heroItem.toString()}
-						{...textAnimation(1, 1)}
+						{...leftSidAnimation(1, 1)}
 						className="top-small-text"
 					>
 						{heroBanner.smallText}
 					</motion.p>
 					<motion.h3
-						{...textAnimation(1, 2)}
+						{...leftSidAnimation(1, 2)}
 						key={heroBanner.midText + heroItem.toString()}
 					>
 						{heroBanner.midText}
 					</motion.h3>
 					<motion.h1
-						{...textAnimation(6, 3)}
+						{...leftSidAnimation(6, 3)}
 						key={heroBanner.largeText1 + heroItem.toString()}
 					>
 						{heroBanner.largeText1}
 					</motion.h1>
 					<motion.p
 						className="old-price"
-						{...textAnimation(1, 4)}
+						{...leftSidAnimation(1, 4)}
 						key={heroBanner.oldPrice + heroItem.toString()}
 					>
 						${heroBanner.oldPrice}
 					</motion.p>
 					<motion.p
 						className="new-price"
-						{...textAnimation(1, 5)}
+						{...leftSidAnimation(1, 5)}
 						key={heroBanner.price + heroItem.toString()}
 					>
 						${heroBanner.price}
@@ -117,7 +117,7 @@ const HeroBanner = ({ heroBannerData }) => {
 					<AnimatePresence>
 						<Link href={`/product/${heroBanner.slug.current}`}>
 							<motion.button
-								{...textAnimation(1, 6)}
+								{...leftSidAnimation(1, 6)}
 								key={heroBanner.buttonText + heroItem.toString() + "K"}
 								type="button"
 							>
@@ -133,7 +133,7 @@ const HeroBanner = ({ heroBannerData }) => {
 						</motion.div>
 					</AnimatePresence>
 
-					<motion.div {...iconAnimation(2)}>
+					<motion.div {...rightSideAnimation(2)}>
 						<FaChevronRight
 							className="right-icon"
 							onClick={() => heroBannerUpdate("right")}
