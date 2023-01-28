@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { client } from "../lib/client";
 import { Product } from "../components";
 import { useRouter } from "next/router";
+import { motion } from "framer-motion";
 // import { useForm } from "react-hook-form";
 
 const Shop = ({ products }) => {
@@ -11,7 +12,7 @@ const Shop = ({ products }) => {
 	const [productsList, setProductsList] = useState(products);
 	const [query, setQuery] = useState("");
 	const [isOpen, setIsOpen] = useState(false);
-	const [sort, setSort] = useState("featured")
+	const [sort, setSort] = useState("featured");
 
 	const manufacturersList = ["All", "ASUS", "Logitech G", "Corsair"];
 	const categoriesList = ["All", "Mouse pad", "Mouse", "Keyboard", "Headset"];
@@ -35,22 +36,21 @@ const Shop = ({ products }) => {
 		setSort(e.target.value);
 	};
 	const showFilterHandler = () => {
-		setIsOpen(prev => !prev);
+		setIsOpen((prev) => !prev);
 		console.log(isOpen);
 	};
 	const sortProducts = (products, filter) => {
-
 		//lets just say the original order is by "featured"
 		//sort array method doesn't make a copy, it changes the array in place
 		//normally i would make a deepcopy with JSON stringify and parse but in this case isn't needed
-		if(filter==="featured") return products;
-		if(filter==="low to high"){
-			return products.sort((a,b)=> a.price - b.price)
+		if (filter === "featured") return products;
+		if (filter === "low to high") {
+			return products.sort((a, b) => a.price - b.price);
 		}
-		if(filter==="high to low"){
-			return products.sort((a,b)=> b.price - a.price)
+		if (filter === "high to low") {
+			return products.sort((a, b) => b.price - a.price);
 		}
-	}
+	};
 	const filterProducts = (products) => {
 		let updatedList = [...products];
 		if (query.length > 0) {
@@ -69,9 +69,9 @@ const Shop = ({ products }) => {
 			);
 		}
 		return updatedList;
-	}
+	};
 	useEffect(() => {
-		let updatedList = filterProducts(products)
+		let updatedList = filterProducts(products);
 		updatedList = sortProducts(updatedList, sort);
 		setProductsList(updatedList);
 	}, [category, manufacturer, query, sort]);
@@ -92,71 +92,66 @@ const Shop = ({ products }) => {
 				}}
 				autoFocus
 			/>
-			<button className="show-filter-btn" onClick={showFilterHandler}>Show Filters</button>
+			<button className="show-filter-btn" onClick={showFilterHandler}>
+				Show Filters
+			</button>
 			<div className="shop-products">
-				<div className={"products-filters-container "+ (isOpen?"":"closed")}>
-					{(<div
-						className={"products-filters" }
-					>
-						<label htmlFor="Category" className="filter-label">
-							Category
-						</label>
-						<select value={category} onChange={handleCategory}>
-							{categoriesList.map((category, i) => {
-								return (
-									<option className="filter-option" value={category} key={i}>
-										{category}
-									</option>
-								);
-							})}
-						</select>
-						<label htmlFor="Manufacturer" className="filter-label">
-							Manufacturer
-						</label>
-						<select value={manufacturer} onChange={handleManufacturer}>
-							{manufacturersList.map((manufacturer, i) => {
-								return (
-									<option
-										className="filter-option"
-										value={manufacturer}
-										key={i}
-									>
-										{manufacturer}
-									</option>
-								);
-							})}
-						</select>
-						<label htmlFor="Sort Products" className="filter-label">
-							Sort by
-						</label>
-						<select value={sort} onChange={handleSort}>
-									<option
-										className="filter-option"
-										value={"featured"}
-									>
-										Featured
-									</option>
-									<option
-										className="filter-option"
-										value={"low to high"}
-									>
-										Price: Low to High
-									</option>
-									<option
-										className="filter-option"
-										value={"high to low"}
-									>
-										Price: High to Low
-									</option>
-						</select>
-					</div>)}
+				<div
+					className={"products-filters-container " + (isOpen ? "" : "closed")}
+				>
+					{
+						<div className={"products-filters"}>
+							<label htmlFor="Category" className="filter-label">
+								Category
+							</label>
+							<select value={category} onChange={handleCategory}>
+								{categoriesList.map((category, i) => {
+									return (
+										<option className="filter-option" value={category} key={i}>
+											{category}
+										</option>
+									);
+								})}
+							</select>
+							<label htmlFor="Manufacturer" className="filter-label">
+								Manufacturer
+							</label>
+							<select value={manufacturer} onChange={handleManufacturer}>
+								{manufacturersList.map((manufacturer, i) => {
+									return (
+										<option
+											className="filter-option"
+											value={manufacturer}
+											key={i}
+										>
+											{manufacturer}
+										</option>
+									);
+								})}
+							</select>
+							<label htmlFor="Sort Products" className="filter-label">
+								Sort by
+							</label>
+							<select value={sort} onChange={handleSort}>
+								<option className="filter-option" value={"featured"}>
+									Featured
+								</option>
+								<option className="filter-option" value={"low to high"}>
+									Price: Low to High
+								</option>
+								<option className="filter-option" value={"high to low"}>
+									Price: High to Low
+								</option>
+							</select>
+						</div>
+					}
 				</div>
 
-				<div className={"products-container " + (isOpen?"":"closed")}>
+				<motion.div layout className={"products-container " + (isOpen ? "" : "closed")}>
 					{productsList?.map((product) => (
 						<Product key={product._id} product={product} />
 					))}
-				</div>
+				</motion.div>
 			</div>
 		</div>
 	);
