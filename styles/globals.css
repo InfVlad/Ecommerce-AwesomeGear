@@ -101,7 +101,7 @@ a {
 .body {
 	background-color: var(--bg-color);
 	min-height: 100vh;
-	width: 100vw;
+	/* width: 100vw; */
 }
 
 /*======================== Navbar =======================*/
@@ -240,6 +240,7 @@ a {
 	margin: auto;
 	color: var(--first-color);
 	z-index: 0;
+	overflow: hidden;
 }
 .hero-banner-container .top-small-text {
 	font-size: 25px;

@@ -55,7 +55,7 @@ const Profile = () => {
 				}
 				setOrders(data);
 			} catch (error) {
-				console.log(getError(error));
+				console.log(error);
 			}
 		};
 		fetchOrders();
