@@ -7,6 +7,7 @@ import { useStateContext } from "../context/StateContext";
 import { Menu } from "@headlessui/react";
 import { deleteData, paymentNotification } from "../lib/utils";
 import { useRouter } from "next/router";
+import { motion } from "framer-motion";
 
 const Navbar = () => {
 	const {
@@ -53,21 +54,33 @@ const Navbar = () => {
 	return (
 		<div className="navbar-container">
 			<Link href={"/"}>
-				<div className="logo-container">
+				<motion.div
+					initial={{ translateY: -25, opacity: 0 }}
+					animate={{ translateY: 0, opacity: 1 }}
+					transition={{ duration: 0.35, delay:0.25 }}
+					className="logo-container"
+				>
 					<img src="/logo.png" alt="" className="logo" />
 					<div className="shop-name">AwesomeGear</div>
-				</div>
+				</motion.div>
 			</Link>
 			<div className="navbar-user-container">
-				<button
+				<motion.button
+				initial={{ translateY: -25, opacity: 0 }}
+				animate={{ translateY: 0, opacity: 1 }}
+				transition={{ duration: 0.35, delay:0.50 }}
 					type="button"
 					className="cart-icon-btn"
 					onClick={() => setShowCart(true)}
 				>
 					<FaShoppingCart className="cart-icon" />
 					<span className="cart-item-qty">{totalQuantities}</span>
-				</button>
-				<div className="user-container">
+				</motion.button>
+				<motion.div
+				initial={{ translateY: -25, opacity: 0 }}
+				animate={{ translateY: 0, opacity: 1 }}
+				transition={{ duration: 0.35, delay:0.95 }}
+				 className="user-container">
 					<div className="user-name">
 						{status === "loading" ? (
 							"Loading"
@@ -102,7 +115,7 @@ const Navbar = () => {
 							<Link href="/login">Login</Link>
 						)}
 					</div>
-				</div>
+				</motion.div>
 			</div>
 			{showCart && <Cart />}
 		</div>

@@ -19,9 +19,9 @@ const Home = ({ bannerData, featuredItems, categoryMenuItems }) => {
 					<BsArrowRightCircle className="checkout-arrow-icon" />
 				</div>
 			</Link>
-			<CategoryMenu categoryMenuItems={categoryMenuItems} />
-			<FeaturedItems featuredItems={featuredItems} />
-			<FooterBanner footerBanner={bannerData && bannerData[1]} />
+			{/* <CategoryMenu categoryMenuItems={categoryMenuItems} /> */}
+			{/* <FeaturedItems featuredItems={featuredItems} /> */}
+			{/* <FooterBanner footerBanner={bannerData && bannerData[1]} /> */}
 		</>
 	);
 };
