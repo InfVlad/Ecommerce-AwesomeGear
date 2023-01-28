@@ -431,7 +431,7 @@ span.text-red {
 	font-size: 1rem;
 	/* transition: 0.3s all ease; */
 }
-.show-filter-btn{
+.show-filter-btn {
 	display: none;
 }
 
@@ -1398,7 +1398,7 @@ span.text-red {
 .update-btn:hover {
 	transform: scale(1.1, 1.1);
 }
-.order-details-container{
+.order-details-container {
 	margin-top: 10vh;
 	margin-left: 5vw;
 	color: var(--text-color);
@@ -1407,68 +1407,250 @@ span.text-red {
 	margin-right: auto;
 	margin-left: auto;
 }
-.order-details-title{
+.order-details-title {
 	margin-bottom: 1rem;
 	font-size: 2rem;
 }
-.order-details-address{
+.order-details-address {
 	font-size: 1.2rem;
 	margin-bottom: 0.9rem;
 }
-.order-details-id{
+.order-details-id {
 	font-size: 1.2rem;
 	margin-bottom: 1rem;
 }
-.order-details-subtitle{
+.order-details-subtitle {
 	font-size: 1.6rem;
 	margin: 1.5rem 0;
 	border-bottom: 3px solid var(--first-color);
 	padding-bottom: 0.3rem;
-
 }
-.order-details-image-container{
+.order-details-image-container {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
-.order-details-card{
+.order-details-card {
 	margin-top: 1.5rem;
 	border: 3px solid var(--first-color);
 	padding: 0.3rem;
 	width: max-content;
 	border-radius: 15px;
 }
-.order-details-table-container{
+.order-details-table-container {
 	width: 100%;
 	overflow: scroll;
 }
-.order-details-table-head{
+.order-details-table-head {
 	font-size: 1.3rem;
 }
-.order-details-table-body{
+.order-details-table-body {
 	font-size: 1.1rem;
 }
 
-.order-details-table-column-item, .order-details-table-column-title{
+.order-details-table-column-item,
+.order-details-table-column-title {
 	text-align: center;
 	padding: 0.8rem;
 }
-.order-details-summary{
+.order-details-summary {
 	width: 180px;
 }
-.order-details-summary-item{
+.order-details-summary-item {
 	display: flex;
 	justify-content: space-between;
 	margin-bottom: 0.8rem;
 }
-.order-details-summary-item.bold{
+.order-details-summary-item.bold {
 	font-size: 1.2rem;
 	font-weight: var(--font-bold);
 }
-.order-details-payment{
+.order-details-payment {
 	font-size: 1.2rem;
 }
 
+/* ==============Loader Component=========== */
+.loader-container {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 50vh;
+	background-color: var(--bg-color);
+	/* animation: animateBg 10s linear infinite; */
+}
+/* @keyframes animateBg {
+	0%
+	{
+		filter: hue-rotate(0deg);
+	}
+
+} */
+
+.loader-container .loader {
+	position: relative;
+	width: 120px;
+	height: 120px;
+}
+.loader-container .loader span {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+/* if there is a better way to do this without SASS let know */
+.loader-container .loader :nth-child(1){
+	transform: rotate(calc(18deg*1));
+}
+.loader-container .loader :nth-child(2){
+	transform: rotate(calc(18deg*2));
+}
+.loader-container .loader :nth-child(3){
+	transform: rotate(calc(18deg*3));
+}
+.loader-container .loader :nth-child(4){
+	transform: rotate(calc(18deg*4));
+}
+.loader-container .loader :nth-child(5){
+	transform: rotate(calc(18deg*5));
+}
+.loader-container .loader :nth-child(6){
+	transform: rotate(calc(18deg*6));
+}
+.loader-container .loader :nth-child(7){
+	transform: rotate(calc(18deg*7));
+}
+.loader-container .loader :nth-child(8){
+	transform: rotate(calc(18deg*8));
+}
+.loader-container .loader :nth-child(9){
+	transform: rotate(calc(18deg*9));
+}
+.loader-container .loader :nth-child(10){
+	transform: rotate(calc(18deg*10));
+}
+.loader-container .loader :nth-child(11){
+	transform: rotate(calc(18deg*11));
+}
+.loader-container .loader :nth-child(12){
+	transform: rotate(calc(18deg*12));
+}
+.loader-container .loader :nth-child(13){
+	transform: rotate(calc(18deg*13));
+}
+.loader-container .loader :nth-child(14){
+	transform: rotate(calc(18deg*14));
+}
+.loader-container .loader :nth-child(15){
+	transform: rotate(calc(18deg*15));
+}
+.loader-container .loader :nth-child(16){
+	transform: rotate(calc(18deg*16));
+}
+.loader-container .loader :nth-child(17){
+	transform: rotate(calc(18deg*17));
+}
+.loader-container .loader :nth-child(18){
+	transform: rotate(calc(18deg*18));
+}
+.loader-container .loader :nth-child(19){
+	transform: rotate(calc(18deg*19));
+}
+.loader-container .loader :nth-child(20){
+	transform: rotate(calc(18deg*20));
+}
+.loader-container .loader :nth-child(1)::before{
+	animation-delay: calc(0.1s*1);
+}
+.loader-container .loader :nth-child(2)::before{
+	animation-delay: calc(0.1s*2);
+}
+.loader-container .loader :nth-child(3)::before{
+	animation-delay: calc(0.1s*3);
+}
+.loader-container .loader :nth-child(4)::before{
+	animation-delay: calc(0.1s*4);
+}
+.loader-container .loader :nth-child(5)::before{
+	animation-delay: calc(0.1s*5);
+}
+.loader-container .loader :nth-child(6)::before{
+	animation-delay: calc(0.1s*6);
+}
+.loader-container .loader :nth-child(7)::before{
+	animation-delay: calc(0.1s*7);
+}
+.loader-container .loader :nth-child(8)::before{
+	animation-delay: calc(0.1s*8);
+}
+.loader-container .loader :nth-child(9)::before{
+	animation-delay: calc(0.1s*9);
+}
+.loader-container .loader :nth-child(10)::before{
+	animation-delay: calc(0.1s*10);
+}
+.loader-container .loader :nth-child(11)::before{
+	animation-delay: calc(0.1s*11);
+}
+.loader-container .loader :nth-child(12)::before{
+	animation-delay: calc(0.1s*12);
+}
+.loader-container .loader :nth-child(13)::before{
+	animation-delay: calc(0.1s*13);
+}
+.loader-container .loader :nth-child(14)::before{
+	animation-delay: calc(0.1s*14);
+}
+.loader-container .loader :nth-child(15)::before{
+	animation-delay: calc(0.1s*15);
+}
+.loader-container .loader :nth-child(16)::before{
+	animation-delay: calc(0.1s*16);
+}
+.loader-container .loader :nth-child(17)::before{
+	animation-delay: calc(0.1s*17);
+}
+.loader-container .loader :nth-child(18)::before{
+	animation-delay: calc(0.1s*18);
+}
+.loader-container .loader :nth-child(19)::before{
+	animation-delay: calc(0.1s*19);
+}
+.loader-container .loader :nth-child(20)::before{
+	animation-delay: calc(0.1s*20);
+}
+.loader-container .loader span::before{
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 15px;
+	height: 15px;
+	border-radius: 50%;
+	background-color: var(--first-color);
+	box-shadow: 0 0 10px var(--first-color),
+				0 0 20px var(--first-color),
+				0 0 40px var(--first-color),
+				0 0 60px var(--first-color),
+				0 0 80px var(--first-color),
+				0 0 100px var(--first-color);
+	animation: animate 2s linear infinite;
+	animation-delay: calc();
+}
+@keyframes animate {
+	0%
+	{
+		transform: scale(1);
+	}
+	80%,100%
+	{
+		transform: scale(0);
+	}
+	
+}
 @media screen and (max-width: 1066px) {
 	.footer-banner-container {
 		height: 500px;
@@ -1501,7 +1683,7 @@ span.text-red {
 	.closed .products-filters {
 		display: none;
 	}
-	.show-filter-btn{
+	.show-filter-btn {
 		display: inline-block;
 	}
 	.products-container.closed {
@@ -1720,10 +1902,9 @@ span.text-red {
 		margin-left: 5vw;
 		margin-right: 5vw;
 		overflow-x: scroll;
-
 	}
 
-	.table{
+	.table {
 		width: 500px;
 	}
 }
@@ -1825,7 +2006,7 @@ span.text-red {
 	.item-desc .flex {
 		width: 160px;
 	}
-	.products-container{
+	.products-container {
 		justify-content: center;
 	}
 }

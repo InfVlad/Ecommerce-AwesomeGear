@@ -5,6 +5,7 @@ import { getData, putData } from "../lib/utils";
 import { signIn, useSession, getSession } from "next-auth/react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
+import { Loader } from "../components";
 
 const Profile = () => {
 	const [isLoading, setIsLoading] = useState(true);
@@ -17,9 +18,6 @@ const Profile = () => {
 		formState: { errors },
 	} = useForm();
 
-	// useEffect(() => {
-	// 	setValue("name", session.user.name);
-	// }, [session.user, setValue]);
 
 	//this is needed to show the new name after an update but to make it work
 	//the SessionProvider property "refetchOnWindowFocus" need to be true,
@@ -65,9 +63,7 @@ const Profile = () => {
 	return (
 		<>
 			<div className="profile-container">
-				<form
-					onSubmit={handleSubmit(handleUpdate)}
-				>
+				<form onSubmit={handleSubmit(handleUpdate)}>
 					<h2 className="profile-title">Update Profile</h2>
 					<div className="update-input">
 						<label htmlFor="name">Name</label>
@@ -91,9 +87,11 @@ const Profile = () => {
 
 				<h2 className="profile-title">Order History</h2>
 				{isLoading ? (
-					<div>Loading...</div>
+					<Loader />
 				) : orders.length < 1 ? (
-					<div className="order-history-empty order-history">You don't have orders yet</div>
+					<div className="order-history-empty order-history">
+						You don't have orders yet
+					</div>
 				) : (
 					<div className="table-container order-history">
 						<table className="table">

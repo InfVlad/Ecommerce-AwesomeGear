@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
+import { Loader } from "../../components";
 import { getData } from "../../lib/utils";
 
 const OrderScreen = () => {
@@ -45,7 +46,7 @@ const OrderScreen = () => {
 			<h1 className="order-details-title">{`Order Details`}</h1>
 			<h2 className="order-details-id">{`ID: ${orderId}`}</h2>
 			{isLoading ? (
-				<div>Loading...</div>
+				<Loader/>
 			) : (
 				<>
 					<h2 className="order-details-subtitle">Shipping Address</h2>
