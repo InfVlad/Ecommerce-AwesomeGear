@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { urlFor } from "../lib/client";
 import { BsArrowRightCircle } from "react-icons/bs";
+import { motion } from "framer-motion";
 
 const Item = ({
 	product: { image, name, slug, price, manufacturer },
@@ -37,14 +38,19 @@ const Item = ({
 
 const FeaturedItems = ({ featuredItems }) => {
 	return (
-		<div className="featured-items-container">
+		<motion.div
+			initial={{ opacity: 0, translateY: 50 }}
+			transition={{ duration: 0.4, delay: 0.4 }}
+			whileInView={{ translateY: 0, opacity: 1 }}
+			className="featured-items-container"
+		>
 			<div className="featured-top-text">Featured Gears:</div>
 			<div className="featured-bg-text">FEATURED</div>
 			<Item product={featuredItems[0]} />
 			<Item product={featuredItems[1]} rotate={true} />
 			<Item product={featuredItems[2]} />
 			<Item product={featuredItems[3]} rotate={true} />
-		</div>
+		</motion.div>
 	);
 };
 

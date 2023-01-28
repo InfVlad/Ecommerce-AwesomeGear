@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { urlFor } from "../lib/client";
+import { motion } from "framer-motion";
 
 const FooterBanner = ({
 	footerBanner: {
@@ -11,11 +12,14 @@ const FooterBanner = ({
 		buttonText,
 		image,
 		desc,
-		slug
+		slug,
 	},
 }) => {
 	return (
-		<div className="footer-banner-container">
+		<motion.div
+		initial={{ opacity: 0, translateY: 50 }}
+		transition={{ duration: 0.4, delay: 0.4 }}
+		whileInView={{ translateY: 0, opacity: 1 }} className="footer-banner-container">
 			<div className="banner-desc">
 				<div className="left">
 					<h3>{largeText1}</h3>
@@ -30,8 +34,8 @@ const FooterBanner = ({
 					</Link>
 				</div>
 			</div>
-				<img src={urlFor(image)} className="footer-banner-image" alt="" />
-		</div>
+			<img src={urlFor(image)} className="footer-banner-image" alt="" />
+		</motion.div>
 	);
 };
 

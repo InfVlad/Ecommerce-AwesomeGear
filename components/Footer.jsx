@@ -5,7 +5,7 @@ const Footer = () => {
 	return (
 		<div className="footer-container">
 			<p>Site made by Vladimir Infante</p>
-			<p>© 2023 Awesome Gear. All rights reserved</p>
+			<p>Copyright © 2023 Awesome Gear. All rights reserved</p>
 			<p className="icons">
 				<a
 					href="https://github.com/SpicyArepa"

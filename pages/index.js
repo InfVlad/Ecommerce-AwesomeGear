@@ -8,16 +8,26 @@ import {
 	CategoryMenu,
 } from "../components";
 import { BsArrowRightCircle } from "react-icons/bs";
+import { motion } from "framer-motion";
 
 const Home = ({ bannerData, featuredItems, categoryMenuItems }) => {
 	return (
 		<>
 			<HeroBanner heroBannerData={bannerData.length && bannerData} />
 			<Link href={`/shop`}>
-				<div className="link-search-products-container">
+				<motion.div
+					initial={{translateY:50, opacity: 0 }}
+					transition={{ duration: 0.4, delay: 0.9 }}
+					whileInView={{
+						opacity: 1,
+						translateY:0
+					}}
+					viewport={{ once: true }}
+					className="link-search-products-container"
+				>
 					<div className="checkout-products">Checkout our products!</div>
 					<BsArrowRightCircle className="checkout-arrow-icon" />
-				</div>
+				</motion.div>
 			</Link>
 			<CategoryMenu categoryMenuItems={categoryMenuItems} />
 			<FeaturedItems featuredItems={featuredItems} />

@@ -2,6 +2,7 @@ import React from "react";
 import { urlFor } from "../lib/client";
 import Link from "next/link";
 import { BsArrowRightCircle } from "react-icons/bs";
+import { motion } from "framer-motion";
 
 const MenuItem = ({ category, product: { image, price }, top, right }) => {
 	return (
@@ -12,11 +13,10 @@ const MenuItem = ({ category, product: { image, price }, top, right }) => {
 				<div className="category-menu-bg-text">{category}</div>
 				<h1>{category}</h1>
 				<Link href={`/shop?category=${category}`}>
-
-				<div className="category-menu-button-container">
-					<BsArrowRightCircle className="category-arrow-icon" />
-					<div className="category-menu-button-text">BROWSE</div>
-				</div>
+					<div className="category-menu-button-container">
+						<BsArrowRightCircle className="category-arrow-icon" />
+						<div className="category-menu-button-text">BROWSE</div>
+					</div>
 				</Link>
 
 				<img
@@ -33,7 +33,16 @@ const MenuItem = ({ category, product: { image, price }, top, right }) => {
 const CategoryMenu = ({ categoryMenuItems }) => {
 	return (
 		<>
-			<div className="category-menu-container">
+			<motion.div
+				initial={{ translateY:50, opacity: 0 }}
+				transition={{ duration: 0.4, delay: 1.2 }}
+				whileInView={{
+					opacity: 1,
+					translateY:0
+				}}
+				viewport={{ once: true }}
+				className="category-menu-container"
+			>
 				<MenuItem
 					category={"Mouse"}
 					product={categoryMenuItems[0]}
@@ -58,7 +67,7 @@ const CategoryMenu = ({ categoryMenuItems }) => {
 					top={65}
 					right={-260}
 				/>
-			</div>
+			</motion.div>
 		</>
 	);
 };
