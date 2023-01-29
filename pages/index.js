@@ -17,12 +17,11 @@ const Home = ({ bannerData, featuredItems, categoryMenuItems }) => {
 			<Link href={`/shop`}>
 				<motion.div
 					initial={{translateY:50, opacity: 0 }}
-					transition={{ duration: 0.4, delay: 0.9 }}
-					whileInView={{
+					transition={{ duration: 0.3, delay: 2.1 }}
+					animate={{
 						opacity: 1,
 						translateY:0
 					}}
-					viewport={{ once: true }}
 					className="link-search-products-container"
 				>
 					<div className="checkout-products">Checkout our products!</div>

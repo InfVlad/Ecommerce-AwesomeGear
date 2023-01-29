@@ -59,7 +59,7 @@ const Navbar = () => {
 				<motion.div
 					initial={{ translateY: -25, opacity: 0 }}
 					animate={{ translateY: 0, opacity: 1 }}
-					transition={{ duration: 0.35, delay: 0.25 }}
+					transition={{ duration: 0.15, delay: 0.10 }}
 					className="logo-container"
 				>
 					<img src="/logo.png" alt="" className="logo" />
@@ -70,9 +70,10 @@ const Navbar = () => {
 				<motion.button
 					initial={{ translateY: -25, opacity: 0 }}
 					animate={{ translateY: 0, opacity: 1 }}
-					transition={{ duration: 0.35, delay: 0.5 }}
+					transition={{ duration: 0.15, delay: 0.25 }}
 					type="button"
 					className="cart-icon-btn"
+					aria-label="dark/light theme toggle"
 					onClick={() => setLightTheme((prev) => !prev)}
 				>
 					{lightTheme ? (
@@ -85,8 +86,9 @@ const Navbar = () => {
 				<motion.button
 					initial={{ translateY: -25, opacity: 0 }}
 					animate={{ translateY: 0, opacity: 1 }}
-					transition={{ duration: 0.35, delay: 0.5 }}
+					transition={{ duration: 0.15, delay: 0.4 }}
 					type="button"
+					aria-label="shopping cart toggle"
 					className="cart-icon-btn"
 					onClick={() => setShowCart(true)}
 				>
@@ -96,7 +98,7 @@ const Navbar = () => {
 				<motion.div
 					initial={{ translateY: -25, opacity: 0 }}
 					animate={{ translateY: 0, opacity: 1 }}
-					transition={{ duration: 0.35, delay: 0.95 }}
+					transition={{ duration: 0.15, delay: 0.85 }}
 					className="user-container"
 				>
 					<div className="user-name">

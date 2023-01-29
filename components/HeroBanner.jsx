@@ -35,11 +35,11 @@ const HeroBanner = ({ heroBannerData }) => {
 		return {
 			initial: { translateX: -50 * direction, opacity: 0 },
 			animate: { translateX: 0, opacity: 1 },
-			transition: { duration: 0.6, delay: 0.7 * i },
+			transition: { duration: 0.6, delay: 0.6+ 0.55 * i },
 			exit: {
 				translateX: 50 * direction,
 				opacity: 0,
-				transition: { duration: 0.1, delay: 0.3 * i },
+				transition: { duration: 0.1, delay: 0.3},
 			},
 		};
 	};
@@ -48,11 +48,11 @@ const HeroBanner = ({ heroBannerData }) => {
 		return {
 			initial: { translateX: -50 * initialMovement, opacity: 0 },
 			animate: { translateX: 0, opacity: 1 },
-			transition: { duration: 0.45, delay: 0.45 * i },
+			transition: { duration: 0.45, delay: 0.7 + 0.25* i },
 			exit: {
 				translateX: 50,
 				opacity: 0,
-				transition: { duration: 0.1, delay: 0.3 },
+				transition: { duration: 0.1, delay: 0.2 },
 			},
 		};
 	};
@@ -61,7 +61,7 @@ const HeroBanner = ({ heroBannerData }) => {
 		return {
 			initial: {  opacity: 0 },
 			animate: { opacity: 1 },
-			transition: { duration: 0.55, delay: 0.5 * i },
+			transition: { duration: 0.55, delay: 1.1 +  0.2* i },
 		};
 	};
 
@@ -91,14 +91,14 @@ const HeroBanner = ({ heroBannerData }) => {
 					</motion.h1>
 					<motion.p
 						className="old-price"
-						{...leftSidAnimation(1, 4)}
+						{...leftSidAnimation(1, 3)}
 						key={heroBanner.oldPrice + heroItem.toString()}
 					>
 						${heroBanner.oldPrice}
 					</motion.p>
 					<motion.p
 						className="new-price"
-						{...leftSidAnimation(1, 5)}
+						{...leftSidAnimation(1, 3)}
 						key={heroBanner.price + heroItem.toString()}
 					>
 						${heroBanner.price}
@@ -117,7 +117,7 @@ const HeroBanner = ({ heroBannerData }) => {
 					<AnimatePresence>
 						<Link href={`/product/${heroBanner.slug.current}`}>
 							<motion.button
-								{...leftSidAnimation(1, 6)}
+								{...leftSidAnimation(1, 3)}
 								key={heroBanner.buttonText + heroItem.toString() + "K"}
 								type="button"
 							>

@@ -35,12 +35,11 @@ const CategoryMenu = ({ categoryMenuItems }) => {
 		<>
 			<motion.div
 				initial={{ translateY:50, opacity: 0 }}
-				transition={{ duration: 0.4, delay: 1.2 }}
-				whileInView={{
+				transition={{ duration: 0.35, delay: 2.7 }}
+				animate={{
 					opacity: 1,
 					translateY:0
 				}}
-				viewport={{ once: true }}
 				className="category-menu-container"
 			>
 				<MenuItem
