@@ -1,8 +1,6 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { getError } from "../lib/error";
 import { getData, putData } from "../lib/utils";
-import { signIn, useSession, getSession } from "next-auth/react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { Loader } from "../components";
@@ -10,7 +8,6 @@ import { Loader } from "../components";
 const Profile = () => {
 	const [isLoading, setIsLoading] = useState(true);
 	const [orders, setOrders] = useState([]);
-	const { data: session } = useSession();
 
 	const {
 		handleSubmit,

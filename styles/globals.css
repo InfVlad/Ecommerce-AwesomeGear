@@ -10,17 +10,17 @@
 	--hue-color: 237;
 
 	/* Colors in HSL*/
-	--first-color: hsl(237, 78%, 70%);
-	--first-color-second: hsl(237, 69%, 61%);
+	--first-color: hsl(237, 77%, 65%);
+	--first-color-second: hsl(237, 69%, 67%);
 	--first-color-alt: hsl(237, 57%, 53%);
-	--first-color-lighter: hsl(237, 92%, 85%);
-	--text-color: hsl(237, 70%, 96%);
+	--first-color-lighter: hsl(237, 83%, 70%);
+	--text-color: hsl(237, 77%, 97%);
 	--text-color-darker: hsl(237, 8%, 75%);
 	--bg-color-light: hsl(237, 45%, 79%);
-	--secondary-color: hsl(237, 8%, 45%);
-	--secondary-color-darker: hsl(237, 8%, 35%);
+	--secondary-color: hsl(237, 26%, 64%);
+	--secondary-color-darker: hsl(237, 11%, 35%);
 	--third-color: hsl(237, 4%, 5%);
-	--bg-color: hsl(237, 13%, 24%);
+	--bg-color: hsl(237, 9%, 19%);
 	--scroll-bar-color: hsl(237, 12%, 90%);
 	--scroll-thumb-color: hsl(237, 12%, 80%);
 
@@ -102,6 +102,7 @@ a {
 	background-color: var(--bg-color);
 	min-height: 100vh;
 	/* width: 100vw; */
+	transition: background .6s ease;
 }
 
 /*======================== Navbar =======================*/
@@ -110,7 +111,7 @@ a {
 	justify-content: space-between;
 	padding: 8px 19px;
 	position: relative;
-	background-color: var(--bg-color);
+	/* background-color: var(--bg-color); */
 	padding-top: 13px;
 	max-width: 1400px;
 	margin-left: auto;
@@ -158,6 +159,7 @@ a {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+	position: relative;
 }
 .cart-icon-btn {
 	font-size: 25px;
@@ -168,6 +170,7 @@ a {
 	transition: transform 0.4s ease;
 	border: none;
 	background-color: transparent;
+	width: 24px;
 }
 .cart-icon {
 	position: absolute;
@@ -501,7 +504,7 @@ span.text-red {
 	margin-left: auto;
 	margin-right: auto;
 	line-height: 1;
-	color: var(--bg-color);
+	color: var(--text-color);
 	width: 95%;
 	margin-top: 80px;
 	overflow: hidden;
@@ -515,12 +518,12 @@ span.text-red {
 .banner-desc button {
 	border-radius: 15px;
 	padding: 10px 16px;
-	background-color: white;
-	color: var(--bg-color);
+	background-color: var(--text-color);
+	color: var(--first-color);
 	border: none;
 	margin-top: 40px;
 	font-size: 20px;
-	font-weight: 500;
+	font-weight: var(--font-bold);
 	cursor: pointer;
 }
 .banner-desc .left {
@@ -562,6 +565,25 @@ span.text-red {
   font-size: 14px;
   font-weight: 300;
 } */
+.light-theme 
+.light-theme .banner-desc button{
+	color: var(--first-color);
+}
+.light-theme .hero-banner-container button,
+.light-theme .footer-banner-container{
+	color: var(--bg-color);
+}
+.light-theme .link-search-products-container .checkout-products,
+.light-theme .link-search-products-container svg{
+	color: var(--bg-color);
+}
+.light-theme .footer-banner-container button{
+	background-color: var(--bg-color);
+}
+.light-theme .hero-banner-container .desc p{
+	color: var(--secondary-color-darker);
+}
+
 .cart-wrapper {
 	width: 100vw;
 	background: rgba(0, 0, 0, 0.5);

@@ -13,6 +13,7 @@ import { urlFor } from "../lib/client";
 import { useSession, signIn } from "next-auth/react";
 import { useRouter } from "next/router";
 import getError from "../lib/error";
+import { motion } from "framer-motion";
 
 const Cart = () => {
 	const cartRef = useRef();
@@ -20,6 +21,7 @@ const Cart = () => {
 		totalPrice,
 		totalQuantities,
 		cartItems,
+		showCart,
 		setShowCart,
 		toggleCartItemQuantity,
 		onRemove,
@@ -51,7 +53,7 @@ const Cart = () => {
 			const asDemo = confirm("Do you want to login with a Demo Account?");
 			if (asDemo) {
 				await loginDemo("user1@example.com", "123456");
-				router.push( redirect || "/checkout")
+				router.push(redirect || "/checkout");
 			} else {
 				toast("Please login before placing an order");
 				setInCheckoutProcess(true);
@@ -62,9 +64,15 @@ const Cart = () => {
 		}
 	};
 
+	const variants = {
+		initial: {opacity:0, x:"100%"},
+		animate: {opacity:1, x:0},
+		transition: {duration:.5}
+	}
+
 	return (
 		<div className="cart-wrapper" ref={cartRef}>
-			<div className="cart-container">
+			<motion.div {...variants} className="cart-container">
 				<button
 					className="cart-heading"
 					type="button"
@@ -151,7 +159,7 @@ const Cart = () => {
 						</div>
 					</div>
 				)}
-			</div>
+			</motion.div>
 		</div>
 	);
 };

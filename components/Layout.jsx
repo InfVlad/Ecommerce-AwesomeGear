@@ -2,11 +2,16 @@ import React from "react";
 import Head from "next/head";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import { motion } from "framer-motion";
+import { useStateContext } from "../context/StateContext";
+
 
 const Layout = ({ children }) => {
+
+	const {lightTheme} = useStateContext();
+
+
 	return (
-		<div className="body">
+		<div className={"body"+ (lightTheme?" light-theme":"")}>
 			<Head>
 				<link
 					rel="icon"

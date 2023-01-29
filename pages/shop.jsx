@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { client } from "../lib/client";
 import { Product } from "../components";
 import { useRouter } from "next/router";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 // import { useForm } from "react-hook-form";
 
 const Shop = ({ products }) => {
@@ -147,10 +147,16 @@ const Shop = ({ products }) => {
 					}
 				</div>
 
-				<motion.div layout className={"products-container " + (isOpen ? "" : "closed")}>
-					{productsList?.map((product) => (
-						<Product key={product._id} product={product} />
-					))}
+				<motion.div
+					layout
+					transition={{ duration: 0.3 }}
+					className={"products-container " + (isOpen ? "" : "closed")}
+				>
+					<AnimatePresence>
+						{productsList?.map((product) => (
+							<Product key={product._id} product={product} />
+						))}
+					</AnimatePresence>
 				</motion.div>
 			</div>
 		</div>

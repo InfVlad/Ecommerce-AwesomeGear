@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
-import { FaShoppingCart, FaUser } from "react-icons/fa";
+import { FaShoppingCart, FaUser, FaMoon, FaSun } from "react-icons/fa";
 import Cart from "./Cart";
 import { useStateContext } from "../context/StateContext";
 import { Menu } from "@headlessui/react";
@@ -17,6 +17,8 @@ const Navbar = () => {
 		setCartItems,
 		setTotalPrice,
 		setTotalQuantities,
+		lightTheme,
+		setLightTheme,
 	} = useStateContext();
 	const router = useRouter();
 	const { status, data: session } = useSession();
@@ -57,7 +59,7 @@ const Navbar = () => {
 				<motion.div
 					initial={{ translateY: -25, opacity: 0 }}
 					animate={{ translateY: 0, opacity: 1 }}
-					transition={{ duration: 0.35, delay:0.25 }}
+					transition={{ duration: 0.35, delay: 0.25 }}
 					className="logo-container"
 				>
 					<img src="/logo.png" alt="" className="logo" />
@@ -66,9 +68,24 @@ const Navbar = () => {
 			</Link>
 			<div className="navbar-user-container">
 				<motion.button
-				initial={{ translateY: -25, opacity: 0 }}
-				animate={{ translateY: 0, opacity: 1 }}
-				transition={{ duration: 0.35, delay:0.50 }}
+					initial={{ translateY: -25, opacity: 0 }}
+					animate={{ translateY: 0, opacity: 1 }}
+					transition={{ duration: 0.35, delay: 0.5 }}
+					type="button"
+					className="cart-icon-btn"
+					onClick={() => setLightTheme((prev) => !prev)}
+				>
+					{lightTheme ? (
+						<FaSun className="cart-icon" />
+					) : (
+						<FaMoon className="cart-icon" />
+					)}
+				</motion.button>
+
+				<motion.button
+					initial={{ translateY: -25, opacity: 0 }}
+					animate={{ translateY: 0, opacity: 1 }}
+					transition={{ duration: 0.35, delay: 0.5 }}
 					type="button"
 					className="cart-icon-btn"
 					onClick={() => setShowCart(true)}
@@ -77,10 +94,11 @@ const Navbar = () => {
 					<span className="cart-item-qty">{totalQuantities}</span>
 				</motion.button>
 				<motion.div
-				initial={{ translateY: -25, opacity: 0 }}
-				animate={{ translateY: 0, opacity: 1 }}
-				transition={{ duration: 0.35, delay:0.95 }}
-				 className="user-container">
+					initial={{ translateY: -25, opacity: 0 }}
+					animate={{ translateY: 0, opacity: 1 }}
+					transition={{ duration: 0.35, delay: 0.95 }}
+					className="user-container"
+				>
 					<div className="user-name">
 						{status === "loading" ? (
 							"Loading"

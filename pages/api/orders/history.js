@@ -11,9 +11,9 @@ const handler = async (req, res) => {
 	try {
 		await db.connect();
 		const orders = await Order.find({ user: user._id });
-		await db.disconnect();
 		res.send(orders);
 	} catch (error) {
+
 		return res.status(422).json({ error });
 	}
 };

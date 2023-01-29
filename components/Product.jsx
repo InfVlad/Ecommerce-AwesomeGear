@@ -3,9 +3,21 @@ import Link from "next/link";
 import { urlFor } from "../lib/client";
 import { motion } from "framer-motion";
 
-const Product = ({ product: { image, name, slug, price, manufacturer } }) => {
+const Product = ({
+	product: { image, name, slug, price, manufacturer, _id },
+}) => {
 	return (
-		<motion.div layout>
+		<motion.div
+			layout
+			key={_id}
+			animate={{ opacity: 1 }}
+			initial={{ opacity: 0 }}
+			exit={{ opacity: 0 }}
+			transition={{
+				opacity: { ease: "linear" },
+				duration: 0.9,
+			}}
+		>
 			<Link href={`/product/${slug.current}`}>
 				<div className="product-card">
 					<img
