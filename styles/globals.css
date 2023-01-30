@@ -18,7 +18,7 @@
 	--text-color-darker: hsl(237, 8%, 75%);
 	--bg-color-light: hsl(237, 45%, 79%);
 	--secondary-color: hsl(237, 26%, 64%);
-	--secondary-color-darker: hsl(237, 11%, 35%);
+	--secondary-color-light: hsl(237, 65%, 84%);
 	--third-color: hsl(237, 4%, 5%);
 	--bg-color: hsl(237, 9%, 19%);
 	--scroll-bar-color: hsl(237, 12%, 90%);
@@ -261,6 +261,11 @@ a {
 }
 
 .hero-banner-container .old-price {
+	font-size: 25px;
+	color: var(--secondary-color-light);
+	text-decoration: line-through;
+}
+.light-theme .hero-banner-container .old-price {
 	font-size: 25px;
 	color: var(--secondary-color);
 	text-decoration: line-through;
