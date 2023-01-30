@@ -1,5 +1,5 @@
 import React from "react";
-import { AiFillGithub, AiOutlineYoutube } from "react-icons/ai";
+import { AiFillGithub } from "react-icons/ai";
 
 const Footer = () => {
 	return (
@@ -14,14 +14,6 @@ const Footer = () => {
 					aria-label="If you wanna know more about the developer checkout the github page"
 				>
 					<AiFillGithub />
-				</a>
-				<a
-					href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-					target="_blank"
-					rel="noopener noreferrer"
-					aria-label="If you wanna know more about the developer checkout the youtube page"
-				>
-					<AiOutlineYoutube />
 				</a>
 			</p>
 		</div>

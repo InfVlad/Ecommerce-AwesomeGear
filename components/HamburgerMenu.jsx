@@ -8,7 +8,7 @@ const HamburgerMenu = ({ logoutClickHandler }) => {
 
 	return (
 		<div className="navbar-hamburger-menu-wrapper">
-			<div class="navbar-hamburger-menu-items">
+			<div className="navbar-hamburger-menu-items">
 				{session?.user ? (
 					<>
 						<div className="hamburger-menu-user">

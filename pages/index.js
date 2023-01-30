@@ -17,7 +17,7 @@ const Home = ({ bannerData, featuredItems, categoryMenuItems }) => {
 			<Link href={`/shop`}>
 				<motion.div
 					initial={{translateY:50, opacity: 0 }}
-					transition={{ duration: 0.3, delay: 2.1 }}
+					transition={{ duration: 0.3, delay: 2.5 }}
 					animate={{
 						opacity: 1,
 						translateY:0

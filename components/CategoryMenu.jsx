@@ -35,7 +35,7 @@ const CategoryMenu = ({ categoryMenuItems }) => {
 		<>
 			<motion.div
 				initial={{ translateY:50, opacity: 0 }}
-				transition={{ duration: 0.35, delay: 2.7 }}
+				transition={{ duration: 0.35, delay: 3.1 }}
 				animate={{
 					opacity: 1,
 					translateY:0

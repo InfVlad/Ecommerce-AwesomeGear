@@ -5,9 +5,12 @@ const Unauthorized = () => {
     const router = useRouter();
     const { message } = router.query;
   return (
+    
+    <div className='unauthorized-page-container'>
     <div className='unauthorized-container'>
-    <h1 className="unauthorized">Access Denied</h1>
+    <h1 className="unauthorized-title">Access Denied</h1>
       {message && <div className="unauthorized-message">{message}</div>}
+    </div>
     </div>
   )
 }

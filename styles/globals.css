@@ -1625,7 +1625,22 @@ span.text-red {
 .order-details-payment {
 	font-size: 1.2rem;
 }
-
+.unauthorized-page-container{
+	min-height: 70vh;
+	margin: auto;
+	color: var(--text-color);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.unauthorized-title{
+	font-size: 2.5rem;
+	text-align: center;
+}
+.unauthorized-message{
+	font-size: 1.4rem;
+	text-align: center;
+}
 /* ==============Loader Component=========== */
 .loader-container {
 	margin: 0;

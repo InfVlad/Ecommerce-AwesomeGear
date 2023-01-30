@@ -35,7 +35,7 @@ const HeroBanner = ({ heroBannerData }) => {
 		return {
 			initial: { translateX: -50 * direction, opacity: 0 },
 			animate: { translateX: 0, opacity: 1 },
-			transition: { duration: 0.6, delay: 0.6+ 0.55 * i },
+			transition: { duration: 0.6, delay: 1+ 0.55 * i },
 			exit: {
 				translateX: 50 * direction,
 				opacity: 0,
@@ -48,7 +48,7 @@ const HeroBanner = ({ heroBannerData }) => {
 		return {
 			initial: { translateX: -50 * initialMovement, opacity: 0 },
 			animate: { translateX: 0, opacity: 1 },
-			transition: { duration: 0.45, delay: 0.7 + 0.25* i },
+			transition: { duration: 0.45, delay: 1.1 + 0.25* i },
 			exit: {
 				translateX: 50,
 				opacity: 0,
@@ -61,7 +61,7 @@ const HeroBanner = ({ heroBannerData }) => {
 		return {
 			initial: {  opacity: 0 },
 			animate: { opacity: 1 },
-			transition: { duration: 0.55, delay: 1.1 +  0.2* i },
+			transition: { duration: 0.55, delay: 1.5 +  0.2* i },
 		};
 	};
 

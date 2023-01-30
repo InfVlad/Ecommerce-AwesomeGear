@@ -72,24 +72,52 @@ const Navbar = () => {
 			</Link>
 			<div className="navbar-buttons-container">
 				<Link href={`/shop?category=Mouse`}>
-					<div className="navbar-button">Mice</div>
+					<motion.div
+						initial={{ translateY: -25, opacity: 0 }}
+						animate={{ translateY: 0, opacity: 1 }}
+						transition={{ duration: 0.09, delay: 0.25 }}
+						className="navbar-button"
+					>
+						Mice
+					</motion.div>
 				</Link>
 
 				<Link href={`/shop?category=Keyboard`}>
-					<div className="navbar-button">Keyboards</div>
+					<motion.div
+						initial={{ translateY: -25, opacity: 0 }}
+						animate={{ translateY: 0, opacity: 1 }}
+						transition={{ duration: 0.09, delay: 0.34 }}
+						className="navbar-button"
+					>
+						Keyboards
+					</motion.div>
 				</Link>
 				<Link href={`/shop?category=Headset`}>
-					<div className="navbar-button">Headsets</div>
+					<motion.div
+						initial={{ translateY: -25, opacity: 0 }}
+						animate={{ translateY: 0, opacity: 1 }}
+						transition={{ duration: 0.09, delay: 0.43 }}
+						className="navbar-button"
+					>
+						Headsets
+					</motion.div>
 				</Link>
 				<Link href={`/shop?category=Mousepad`}>
-					<div className="navbar-button">Mouse pads</div>
+					<motion.div
+						initial={{ translateY: -25, opacity: 0 }}
+						animate={{ translateY: 0, opacity: 1 }}
+						transition={{ duration: 0.09, delay: 0.52 }}
+						className="navbar-button"
+					>
+						Mouse pads
+					</motion.div>
 				</Link>
 			</div>
 			<div className="navbar-user-container">
 				<motion.button
 					initial={{ translateY: -25, opacity: 0 }}
 					animate={{ translateY: 0, opacity: 1 }}
-					transition={{ duration: 0.15, delay: 0.25 }}
+					transition={{ duration: 0.15, delay: 0.65 }}
 					type="button"
 					className="cart-icon-btn"
 					aria-label="dark/light theme toggle"
@@ -105,7 +133,7 @@ const Navbar = () => {
 				<motion.button
 					initial={{ translateY: -25, opacity: 0 }}
 					animate={{ translateY: 0, opacity: 1 }}
-					transition={{ duration: 0.15, delay: 0.4 }}
+					transition={{ duration: 0.15, delay: 0.8 }}
 					type="button"
 					aria-label="shopping cart toggle"
 					className="cart-icon-btn"
@@ -120,22 +148,18 @@ const Navbar = () => {
 				<motion.div
 					initial={{ translateY: -25, opacity: 0 }}
 					animate={{ translateY: 0, opacity: 1 }}
-					transition={{ duration: 0.15, delay: 0.85 }}
+					transition={{ duration: 0.15, delay: 1.0 }}
 					className="user-container"
 				>
 					<div className="user-name">
-						{/* <div className="burger-icon">
-							<GiHamburgerMenu className="fa-icon" />
-							Hamb
-						</div> */}
-						<div class="navbar-hamburger-container">
+						<div className="navbar-hamburger-container">
 							<div
-								class={"hamburger-lines" + (showHamMenu ? " active" : "")}
+								className={"hamburger-lines" + (showHamMenu ? " active" : "")}
 								onClick={() => setShowHamMenu((prev) => !prev)}
 							>
-								<span class="line line1"></span>
-								<span class="line line2"></span>
-								<span class="line line3"></span>
+								<span className="line line1"></span>
+								<span className="line line2"></span>
+								<span className="line line3"></span>
 							</div>
 							{showHamMenu && (
 								<HamburgerMenu logoutClickHandler={logoutClickHandler} />
