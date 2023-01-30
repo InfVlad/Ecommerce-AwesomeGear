@@ -569,9 +569,7 @@ span.text-red {
 	font-size: 1rem;
 	/* transition: 0.3s all ease; */
 }
-.show-filter-btn {
-	display: none;
-}
+
 
 .products-container {
 	display: flex;
@@ -1809,6 +1807,9 @@ span.text-red {
 	animation: animate 2s linear infinite;
 	animation-delay: calc();
 }
+.btn.show-filters-btn {
+	display: none;
+}
 @keyframes animate {
 	0% {
 		transform: scale(1);
@@ -1822,9 +1823,10 @@ span.text-red {
 	.footer-banner-container {
 		height: 500px;
 	}
-	.show-filters{
+	.btn.show-filters-btn{
 		width: 180px;
 		font-size: 1rem;
+		display: inline;
 	}
 
 	.banner-desc h3 {

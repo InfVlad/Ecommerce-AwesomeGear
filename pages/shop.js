@@ -92,7 +92,7 @@ const Shop = ({ products }) => {
 				}}
 				autoFocus
 			/>
-			<button className="btn show-filters" onClick={showFilterHandler}>
+			<button className="btn show-filters-btn" onClick={showFilterHandler}>
 				Show Filters
 			</button>
 			<div className="shop-products">
