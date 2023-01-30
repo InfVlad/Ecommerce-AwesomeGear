@@ -21,7 +21,6 @@ const Cart = () => {
 		totalPrice,
 		totalQuantities,
 		cartItems,
-		showCart,
 		setShowCart,
 		toggleCartItemQuantity,
 		onRemove,
@@ -65,10 +64,10 @@ const Cart = () => {
 	};
 
 	const variants = {
-		initial: {opacity:0, x:"100%"},
-		animate: {opacity:1, x:0},
-		transition: {duration:.5}
-	}
+		initial: { opacity: 0, x: "100%" },
+		animate: { opacity: 1, x: 0 },
+		transition: { duration: 0.5 },
+	};
 
 	return (
 		<div className="cart-wrapper" ref={cartRef}>

@@ -1,15 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
 import { FaShoppingCart, FaUser, FaMoon, FaSun } from "react-icons/fa";
+import { GiHamburgerMenu } from "react-icons/gi";
 import Cart from "./Cart";
 import { useStateContext } from "../context/StateContext";
 import { Menu } from "@headlessui/react";
 import { deleteData, paymentNotification } from "../lib/utils";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
+import HamburgerMenu from "./HamburgerMenu";
+// import { HamburgerMenu } from ""
 
 const Navbar = () => {
+	const [showHamMenu, setShowHamMenu] = useState(false);
 	const {
 		showCart,
 		setShowCart,
@@ -59,13 +63,28 @@ const Navbar = () => {
 				<motion.div
 					initial={{ translateY: -25, opacity: 0 }}
 					animate={{ translateY: 0, opacity: 1 }}
-					transition={{ duration: 0.15, delay: 0.10 }}
+					transition={{ duration: 0.15, delay: 0.1 }}
 					className="logo-container"
 				>
 					<img src="/logo.png" alt="" className="logo" />
-					<div className="shop-name">AwesomeGear</div>
+					<div className="navbar-shop-name">AwesomeGear</div>
 				</motion.div>
 			</Link>
+			<div className="navbar-buttons-container">
+				<Link href={`/shop?category=Mouse`}>
+					<div className="navbar-button">Mice</div>
+				</Link>
+
+				<Link href={`/shop?category=Keyboard`}>
+					<div className="navbar-button">Keyboards</div>
+				</Link>
+				<Link href={`/shop?category=Headset`}>
+					<div className="navbar-button">Headsets</div>
+				</Link>
+				<Link href={`/shop?category=Mousepad`}>
+					<div className="navbar-button">Mouse pads</div>
+				</Link>
+			</div>
 			<div className="navbar-user-container">
 				<motion.button
 					initial={{ translateY: -25, opacity: 0 }}
@@ -90,7 +109,10 @@ const Navbar = () => {
 					type="button"
 					aria-label="shopping cart toggle"
 					className="cart-icon-btn"
-					onClick={() => setShowCart(true)}
+					onClick={() => {
+						setShowCart(true);
+						if (showHamMenu) setShowHamMenu(false);
+					}}
 				>
 					<FaShoppingCart className="cart-icon" />
 					<span className="cart-item-qty">{totalQuantities}</span>
@@ -102,8 +124,25 @@ const Navbar = () => {
 					className="user-container"
 				>
 					<div className="user-name">
+						{/* <div className="burger-icon">
+							<GiHamburgerMenu className="fa-icon" />
+							Hamb
+						</div> */}
+						<div class="navbar-hamburger-container">
+							<div
+								class={"hamburger-lines" + (showHamMenu ? " active" : "")}
+								onClick={() => setShowHamMenu((prev) => !prev)}
+							>
+								<span class="line line1"></span>
+								<span class="line line2"></span>
+								<span class="line line3"></span>
+							</div>
+							{showHamMenu && (
+								<HamburgerMenu logoutClickHandler={logoutClickHandler} />
+							)}
+						</div>
 						{status === "loading" ? (
-							"Loading"
+							<div className="dropdown-menu-container">Loading</div>
 						) : session?.user ? (
 							<Menu as="div" className="dropdown-menu-container">
 								<Menu.Button className="dropdown-button">
@@ -132,7 +171,9 @@ const Navbar = () => {
 								</Menu.Items>
 							</Menu>
 						) : (
-							<Link href="/login">Login</Link>
+							<Link href="/login">
+								<div className="login">Login</div>
+							</Link>
 						)}
 					</div>
 				</motion.div>

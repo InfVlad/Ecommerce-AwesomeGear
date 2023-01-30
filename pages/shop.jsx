@@ -24,7 +24,7 @@ const Shop = ({ products }) => {
 		} else {
 			setCategory(router.query.category);
 		}
-	}, []);
+	}, [router.query.category]);
 
 	const handleCategory = (e) => {
 		setCategory(e.target.value);
@@ -92,7 +92,7 @@ const Shop = ({ products }) => {
 				}}
 				autoFocus
 			/>
-			<button className="show-filter-btn" onClick={showFilterHandler}>
+			<button className="btn show-filters" onClick={showFilterHandler}>
 				Show Filters
 			</button>
 			<div className="shop-products">

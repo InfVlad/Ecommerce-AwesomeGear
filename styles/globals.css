@@ -19,6 +19,7 @@
 	--bg-color-light: hsl(237, 45%, 79%);
 	--secondary-color: hsl(237, 26%, 64%);
 	--secondary-color-light: hsl(237, 65%, 84%);
+	--secondary-color-darker: hsl(237, 12%, 44%);
 	--third-color: hsl(237, 4%, 5%);
 	--bg-color: hsl(237, 9%, 19%);
 	--scroll-bar-color: hsl(237, 12%, 90%);
@@ -102,7 +103,7 @@ a {
 	background-color: var(--bg-color);
 	min-height: 100vh;
 	/* width: 100vw; */
-	transition: background .6s ease;
+	transition: background 0.6s ease;
 }
 
 /*======================== Navbar =======================*/
@@ -161,6 +162,128 @@ a {
 	justify-content: space-between;
 	position: relative;
 }
+
+.navbar-hamburger-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 40px;
+}
+/* ------------------------- */
+.navbar-hamburger-menu-wrapper {
+	width: 20vw;
+	min-width: 180px;
+	/* background: rgba(0, 0, 0, 0.5); */
+	background-color: var(--bg-color);
+	border: 3px solid var(--first-color);
+	border-radius: 15px;
+	position: fixed;
+	right: 0;
+	top: 92px;
+	z-index: 100;
+	will-change: transform;
+	transition: all 1s ease-in-out;
+	max-height: 60vh;
+	cursor: auto;
+}
+
+/* .navbar-hamburger-menu-items-container {
+	height: 600px;
+	width: 300px;
+	background-color: var(--bg-color);
+	float: right;
+	padding: 40px 10px;
+	position: relative;
+} */
+
+.hamburger-menu-item {
+	display: block;
+	min-width: 150px;
+	text-align: left;
+	padding-top: 0.5rem;
+	padding-left: 0.9rem;
+	clear: both;
+	width: 100%;
+	margin-bottom: 0.5rem;
+	transition: all 0.3s ease;
+	cursor: pointer;
+}
+.hamburger-menu-item:hover {
+	padding-left: 1.3rem;
+	color: var(--first-color);
+}
+.hamburger-separator {
+	width: 100%;
+	height: 2px;
+	margin: 8px 0;
+	background-color: var(--first-color);
+}
+.hamburger-menu-user {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 10px;
+	padding-left: 0.9rem;
+	gap: 0.4rem;
+}
+.hamburger-menu-user-name {
+	color: var(--first-color);
+}
+
+/* --------------------- */
+.navbar-hamburger-container {
+	display: none;
+	position: relative;
+	height: 60px;
+}
+
+.navbar-hamburger-container .hamburger-lines {
+	display: block;
+	height: 20px;
+	width: 26px;
+	position: absolute;
+	top: 21px;
+	left: -5px;
+	z-index: 2;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.navbar-hamburger-container .hamburger-lines .line {
+	display: block;
+	height: 4px;
+	width: 100%;
+	border-radius: 10px;
+	background: var(--secondary-color);
+}
+
+.navbar-hamburger-container .hamburger-lines .line1 {
+	transform-origin: 0% 0%;
+	transition: transform 0.4s ease-in-out;
+}
+
+.navbar-hamburger-container .hamburger-lines .line2 {
+	transition: transform 0.2s ease-in-out;
+}
+
+.navbar-hamburger-container .hamburger-lines .line3 {
+	transform-origin: 0% 100%;
+	transition: transform 0.4s ease-in-out;
+}
+
+.navbar-hamburger-container .hamburger-lines.active .line1 {
+	transform: rotate(45deg);
+}
+
+.navbar-hamburger-container .hamburger-lines.active .line2 {
+	transform: scaleY(0);
+}
+
+.navbar-hamburger-container .hamburger-lines.active .line3 {
+	transform: rotate(-45deg);
+}
+
 .cart-icon-btn {
 	font-size: 25px;
 	color: var(--secondary-color);
@@ -199,6 +322,7 @@ a {
 	flex-direction: row;
 	align-items: center;
 	padding-left: 10px;
+	height: 40px;
 	margin: 5px 12px;
 	border-left: 2px solid var(--first-color);
 	cursor: pointer;
@@ -211,6 +335,11 @@ a {
 	margin: 0 2px;
 	width: fit-content;
 	padding: 0 3px;
+}
+.burger-icon {
+	margin-top: 8px;
+	font-size: 1.9rem;
+	display: none;
 }
 
 .fa-icon {
@@ -570,22 +699,21 @@ span.text-red {
   font-size: 14px;
   font-weight: 300;
 } */
-.light-theme 
-.light-theme .banner-desc button{
+.light-theme .light-theme .banner-desc button {
 	color: var(--first-color);
 }
 .light-theme .hero-banner-container button,
-.light-theme .footer-banner-container{
+.light-theme .footer-banner-container {
 	color: var(--bg-color);
 }
 .light-theme .link-search-products-container .checkout-products,
-.light-theme .link-search-products-container svg{
+.light-theme .link-search-products-container svg {
 	color: var(--bg-color);
 }
-.light-theme .footer-banner-container button{
+.light-theme .footer-banner-container button {
 	background-color: var(--bg-color);
 }
-.light-theme .hero-banner-container .desc p{
+.light-theme .hero-banner-container .desc p {
 	color: var(--secondary-color-darker);
 }
 
@@ -1531,127 +1659,127 @@ span.text-red {
 	height: 100%;
 }
 /* if there is a better way to do this without SASS let know */
-.loader-container .loader :nth-child(1){
-	transform: rotate(calc(18deg*1));
+.loader-container .loader :nth-child(1) {
+	transform: rotate(calc(18deg * 1));
 }
-.loader-container .loader :nth-child(2){
-	transform: rotate(calc(18deg*2));
+.loader-container .loader :nth-child(2) {
+	transform: rotate(calc(18deg * 2));
 }
-.loader-container .loader :nth-child(3){
-	transform: rotate(calc(18deg*3));
+.loader-container .loader :nth-child(3) {
+	transform: rotate(calc(18deg * 3));
 }
-.loader-container .loader :nth-child(4){
-	transform: rotate(calc(18deg*4));
+.loader-container .loader :nth-child(4) {
+	transform: rotate(calc(18deg * 4));
 }
-.loader-container .loader :nth-child(5){
-	transform: rotate(calc(18deg*5));
+.loader-container .loader :nth-child(5) {
+	transform: rotate(calc(18deg * 5));
 }
-.loader-container .loader :nth-child(6){
-	transform: rotate(calc(18deg*6));
+.loader-container .loader :nth-child(6) {
+	transform: rotate(calc(18deg * 6));
 }
-.loader-container .loader :nth-child(7){
-	transform: rotate(calc(18deg*7));
+.loader-container .loader :nth-child(7) {
+	transform: rotate(calc(18deg * 7));
 }
-.loader-container .loader :nth-child(8){
-	transform: rotate(calc(18deg*8));
+.loader-container .loader :nth-child(8) {
+	transform: rotate(calc(18deg * 8));
 }
-.loader-container .loader :nth-child(9){
-	transform: rotate(calc(18deg*9));
+.loader-container .loader :nth-child(9) {
+	transform: rotate(calc(18deg * 9));
 }
-.loader-container .loader :nth-child(10){
-	transform: rotate(calc(18deg*10));
+.loader-container .loader :nth-child(10) {
+	transform: rotate(calc(18deg * 10));
 }
-.loader-container .loader :nth-child(11){
-	transform: rotate(calc(18deg*11));
+.loader-container .loader :nth-child(11) {
+	transform: rotate(calc(18deg * 11));
 }
-.loader-container .loader :nth-child(12){
-	transform: rotate(calc(18deg*12));
+.loader-container .loader :nth-child(12) {
+	transform: rotate(calc(18deg * 12));
 }
-.loader-container .loader :nth-child(13){
-	transform: rotate(calc(18deg*13));
+.loader-container .loader :nth-child(13) {
+	transform: rotate(calc(18deg * 13));
 }
-.loader-container .loader :nth-child(14){
-	transform: rotate(calc(18deg*14));
+.loader-container .loader :nth-child(14) {
+	transform: rotate(calc(18deg * 14));
 }
-.loader-container .loader :nth-child(15){
-	transform: rotate(calc(18deg*15));
+.loader-container .loader :nth-child(15) {
+	transform: rotate(calc(18deg * 15));
 }
-.loader-container .loader :nth-child(16){
-	transform: rotate(calc(18deg*16));
+.loader-container .loader :nth-child(16) {
+	transform: rotate(calc(18deg * 16));
 }
-.loader-container .loader :nth-child(17){
-	transform: rotate(calc(18deg*17));
+.loader-container .loader :nth-child(17) {
+	transform: rotate(calc(18deg * 17));
 }
-.loader-container .loader :nth-child(18){
-	transform: rotate(calc(18deg*18));
+.loader-container .loader :nth-child(18) {
+	transform: rotate(calc(18deg * 18));
 }
-.loader-container .loader :nth-child(19){
-	transform: rotate(calc(18deg*19));
+.loader-container .loader :nth-child(19) {
+	transform: rotate(calc(18deg * 19));
 }
-.loader-container .loader :nth-child(20){
-	transform: rotate(calc(18deg*20));
+.loader-container .loader :nth-child(20) {
+	transform: rotate(calc(18deg * 20));
 }
-.loader-container .loader :nth-child(1)::before{
-	animation-delay: calc(0.1s*1);
+.loader-container .loader :nth-child(1)::before {
+	animation-delay: calc(0.1s * 1);
 }
-.loader-container .loader :nth-child(2)::before{
-	animation-delay: calc(0.1s*2);
+.loader-container .loader :nth-child(2)::before {
+	animation-delay: calc(0.1s * 2);
 }
-.loader-container .loader :nth-child(3)::before{
-	animation-delay: calc(0.1s*3);
+.loader-container .loader :nth-child(3)::before {
+	animation-delay: calc(0.1s * 3);
 }
-.loader-container .loader :nth-child(4)::before{
-	animation-delay: calc(0.1s*4);
+.loader-container .loader :nth-child(4)::before {
+	animation-delay: calc(0.1s * 4);
 }
-.loader-container .loader :nth-child(5)::before{
-	animation-delay: calc(0.1s*5);
+.loader-container .loader :nth-child(5)::before {
+	animation-delay: calc(0.1s * 5);
 }
-.loader-container .loader :nth-child(6)::before{
-	animation-delay: calc(0.1s*6);
+.loader-container .loader :nth-child(6)::before {
+	animation-delay: calc(0.1s * 6);
 }
-.loader-container .loader :nth-child(7)::before{
-	animation-delay: calc(0.1s*7);
+.loader-container .loader :nth-child(7)::before {
+	animation-delay: calc(0.1s * 7);
 }
-.loader-container .loader :nth-child(8)::before{
-	animation-delay: calc(0.1s*8);
+.loader-container .loader :nth-child(8)::before {
+	animation-delay: calc(0.1s * 8);
 }
-.loader-container .loader :nth-child(9)::before{
-	animation-delay: calc(0.1s*9);
+.loader-container .loader :nth-child(9)::before {
+	animation-delay: calc(0.1s * 9);
 }
-.loader-container .loader :nth-child(10)::before{
-	animation-delay: calc(0.1s*10);
+.loader-container .loader :nth-child(10)::before {
+	animation-delay: calc(0.1s * 10);
 }
-.loader-container .loader :nth-child(11)::before{
-	animation-delay: calc(0.1s*11);
+.loader-container .loader :nth-child(11)::before {
+	animation-delay: calc(0.1s * 11);
 }
-.loader-container .loader :nth-child(12)::before{
-	animation-delay: calc(0.1s*12);
+.loader-container .loader :nth-child(12)::before {
+	animation-delay: calc(0.1s * 12);
 }
-.loader-container .loader :nth-child(13)::before{
-	animation-delay: calc(0.1s*13);
+.loader-container .loader :nth-child(13)::before {
+	animation-delay: calc(0.1s * 13);
 }
-.loader-container .loader :nth-child(14)::before{
-	animation-delay: calc(0.1s*14);
+.loader-container .loader :nth-child(14)::before {
+	animation-delay: calc(0.1s * 14);
 }
-.loader-container .loader :nth-child(15)::before{
-	animation-delay: calc(0.1s*15);
+.loader-container .loader :nth-child(15)::before {
+	animation-delay: calc(0.1s * 15);
 }
-.loader-container .loader :nth-child(16)::before{
-	animation-delay: calc(0.1s*16);
+.loader-container .loader :nth-child(16)::before {
+	animation-delay: calc(0.1s * 16);
 }
-.loader-container .loader :nth-child(17)::before{
-	animation-delay: calc(0.1s*17);
+.loader-container .loader :nth-child(17)::before {
+	animation-delay: calc(0.1s * 17);
 }
-.loader-container .loader :nth-child(18)::before{
-	animation-delay: calc(0.1s*18);
+.loader-container .loader :nth-child(18)::before {
+	animation-delay: calc(0.1s * 18);
 }
-.loader-container .loader :nth-child(19)::before{
-	animation-delay: calc(0.1s*19);
+.loader-container .loader :nth-child(19)::before {
+	animation-delay: calc(0.1s * 19);
 }
-.loader-container .loader :nth-child(20)::before{
-	animation-delay: calc(0.1s*20);
+.loader-container .loader :nth-child(20)::before {
+	animation-delay: calc(0.1s * 20);
 }
-.loader-container .loader span::before{
+.loader-container .loader span::before {
 	content: "";
 	position: absolute;
 	top: 0;
@@ -1660,29 +1788,28 @@ span.text-red {
 	height: 15px;
 	border-radius: 50%;
 	background-color: var(--first-color);
-	box-shadow: 0 0 10px var(--first-color),
-				0 0 20px var(--first-color),
-				0 0 40px var(--first-color),
-				0 0 60px var(--first-color),
-				0 0 80px var(--first-color),
-				0 0 100px var(--first-color);
+	box-shadow: 0 0 10px var(--first-color), 0 0 20px var(--first-color),
+		0 0 40px var(--first-color), 0 0 60px var(--first-color),
+		0 0 80px var(--first-color), 0 0 100px var(--first-color);
 	animation: animate 2s linear infinite;
 	animation-delay: calc();
 }
 @keyframes animate {
-	0%
-	{
+	0% {
 		transform: scale(1);
 	}
-	80%,100%
-	{
+	80%,
+	100% {
 		transform: scale(0);
 	}
-	
 }
 @media screen and (max-width: 1066px) {
 	.footer-banner-container {
 		height: 500px;
+	}
+	.show-filters{
+		width: 180px;
+		font-size: 1rem;
 	}
 
 	.banner-desc h3 {
@@ -1729,13 +1856,18 @@ span.text-red {
 	.buttons .buy-now {
 		width: 150px;
 	}
+	.navbar-buttons-container,
+	.dropdown-button-text,
+	.dropdown-menu-container,
+	.login {
+		display: none;
+	}
+	.navbar-hamburger-container {
+		display: block;
+	}
 }
 
 @media screen and (max-width: 768px) {
-	.navbar-buttons-container,
-	.dropdown-button-text {
-		display: none;
-	}
 	.hero-banner-container {
 		height: 560px;
 		overflow: hidden;
@@ -1944,6 +2076,9 @@ span.text-red {
 	/* .link-search-products-container{
     flex-direction: column;
   } */
+	.navbar-shop-name {
+		display: none;
+	}
 	.hero-banner-container {
 		height: 500px;
 		margin-bottom: 0;
@@ -2043,9 +2178,6 @@ span.text-red {
 	.hero-product-name {
 		left: 15%;
 		font-size: 1.2rem;
-	}
-	.shop-name {
-		display: none;
 	}
 
 	.right-icon,
