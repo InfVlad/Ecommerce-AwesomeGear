@@ -8,7 +8,7 @@ const Footer = () => {
 			<p>Copyright © 2023 Awesome Gear. All rights reserved</p>
 			<p className="icons">
 				<a
-					href="https://github.com/SpicyArepa"
+					href="https://github.com/InfVlad"
 					target="_blank"
 					rel="noopener noreferrer"
 					aria-label="If you wanna know more about the developer checkout the github page"
