@@ -1,14 +1,18 @@
 import React from "react";
 import { client } from "../lib/client";
 import Link from "next/link";
+import dynamic from "next/dynamic"
 import {
 	HeroBanner,
-	FeaturedItems,
 	FooterBanner,
 	CategoryMenu,
 } from "../components";
 import { BsArrowRightCircle } from "react-icons/bs";
 import { motion } from "framer-motion";
+
+const LazyFeaturedItems = dynamic(()=> import("../components/FeaturedItems"),{
+	loading: () => "Loading..."
+})
 
 const Home = ({ bannerData, featuredItems, categoryMenuItems }) => {
 	return (
@@ -29,7 +33,7 @@ const Home = ({ bannerData, featuredItems, categoryMenuItems }) => {
 				</motion.div>
 			</Link>
 			<CategoryMenu categoryMenuItems={categoryMenuItems} />
-			<FeaturedItems featuredItems={featuredItems} />
+			<LazyFeaturedItems featuredItems={featuredItems} />
 			<FooterBanner footerBanner={bannerData && bannerData[1]} />
 		</>
 	);
