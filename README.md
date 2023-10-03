@@ -103,7 +103,7 @@ I wanted to try Next Js and check why is it so popular and what a better way to 
 2. An online Shop where i can sell anything i want, AKA, an Ecommerce.
 3. An app dedicated to solve a problem i have with a video game i like.
 
-At the end i went with the 3rd option, because is more general and more people might need something like that, that been said i plan to build the other apps anyways because those a problems that need a solution and programming is fun.
+At the end i went with the 2nd option, because is more general and more people might need something like that, that been said i plan to build the other apps anyways because those a problems that need a solution and programming is fun.
 
 - ### TypeScript vs JavaScript
 
